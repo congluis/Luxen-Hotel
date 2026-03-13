@@ -1,0 +1,357 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = LuxenHotel
+build_property.RootNamespace = LuxenHotel
+build_property.ProjectDir = D:\cnpm\LuxenHotel\LuxenHotel\LuxenHotel\LuxenHotel\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\cnpm\LuxenHotel\LuxenHotel\LuxenHotel\LuxenHotel
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/AccommodationManagement/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWNjb21tb2RhdGlvbk1hbmFnZW1lbnRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/AccommodationManagement/Partial/Index/_AccommodationTableHeader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWNjb21tb2RhdGlvbk1hbmFnZW1lbnRcUGFydGlhbFxJbmRleFxfQWNjb21tb2RhdGlvblRhYmxlSGVhZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/AccommodationManagement/Partial/Index/_AccommodationTableRow.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWNjb21tb2RhdGlvbk1hbmFnZW1lbnRcUGFydGlhbFxJbmRleFxfQWNjb21tb2RhdGlvblRhYmxlUm93LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/AccommodationManagement/Partial/Save/_Aside.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWNjb21tb2RhdGlvbk1hbmFnZW1lbnRcUGFydGlhbFxTYXZlXF9Bc2lkZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/AccommodationManagement/Partial/Save/_GeneralTab.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWNjb21tb2RhdGlvbk1hbmFnZW1lbnRcUGFydGlhbFxTYXZlXF9HZW5lcmFsVGFiLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/AccommodationManagement/Partial/Save/_Main.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWNjb21tb2RhdGlvbk1hbmFnZW1lbnRcUGFydGlhbFxTYXZlXF9NYWluLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/AccommodationManagement/Partial/Save/_ServicesTab.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWNjb21tb2RhdGlvbk1hbmFnZW1lbnRcUGFydGlhbFxTYXZlXF9TZXJ2aWNlc1RhYi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/AccommodationManagement/Save.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWNjb21tb2RhdGlvbk1hbmFnZW1lbnRcU2F2ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/ComboManager/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ29tYm9NYW5hZ2VyXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/ComboManager/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ29tYm9NYW5hZ2VyXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/ComboManager/Partial/EditForm/_GeneralInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ29tYm9NYW5hZ2VyXFBhcnRpYWxcRWRpdEZvcm1cX0dlbmVyYWxJbmZvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/ComboManager/Partial/EditForm/_ServicesIncluded.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ29tYm9NYW5hZ2VyXFBhcnRpYWxcRWRpdEZvcm1cX1NlcnZpY2VzSW5jbHVkZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/ComboManager/Partial/Form/_AddComboForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ29tYm9NYW5hZ2VyXFBhcnRpYWxcRm9ybVxfQWRkQ29tYm9Gb3JtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/ComboManager/Partial/Form/_ComboBasicField.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ29tYm9NYW5hZ2VyXFBhcnRpYWxcRm9ybVxfQ29tYm9CYXNpY0ZpZWxkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/ComboManager/Partial/Form/_ComboServices.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ29tYm9NYW5hZ2VyXFBhcnRpYWxcRm9ybVxfQ29tYm9TZXJ2aWNlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/ComboManager/Partial/Index/_AccommodationTableHeader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ29tYm9NYW5hZ2VyXFBhcnRpYWxcSW5kZXhcX0FjY29tbW9kYXRpb25UYWJsZUhlYWRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/ComboManager/Partial/Index/_AccommodationTableRow.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ29tYm9NYW5hZ2VyXFBhcnRpYWxcSW5kZXhcX0FjY29tbW9kYXRpb25UYWJsZVJvdy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/Dashboard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFzaGJvYXJkXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/Dashboard/Partial/_EarningsSummary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFzaGJvYXJkXFBhcnRpYWxcX0Vhcm5pbmdzU3VtbWFyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/OrderManager/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3JkZXJNYW5hZ2VyXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/OrderManager/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3JkZXJNYW5hZ2VyXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/OrderManager/Partial/Details/_BookingDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3JkZXJNYW5hZ2VyXFBhcnRpYWxcRGV0YWlsc1xfQm9va2luZ0RldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/OrderManager/Partial/Details/_ComboSection.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3JkZXJNYW5hZ2VyXFBhcnRpYWxcRGV0YWlsc1xfQ29tYm9TZWN0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/OrderManager/Partial/Details/_CustomerInformation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3JkZXJNYW5hZ2VyXFBhcnRpYWxcRGV0YWlsc1xfQ3VzdG9tZXJJbmZvcm1hdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/OrderManager/Partial/Details/_ServiceSection.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3JkZXJNYW5hZ2VyXFBhcnRpYWxcRGV0YWlsc1xfU2VydmljZVNlY3Rpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/OrderManager/Partial/Index/_OrderTableHeader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3JkZXJNYW5hZ2VyXFBhcnRpYWxcSW5kZXhcX09yZGVyVGFibGVIZWFkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/OrderManager/Partial/Index/_OrderTableRow.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcT3JkZXJNYW5hZ2VyXFBhcnRpYWxcSW5kZXhcX09yZGVyVGFibGVSb3cuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/Shared/Partials/sidebar/_breadcrumb.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXFBhcnRpYWxzXHNpZGViYXJcX2JyZWFkY3J1bWIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/Shared/Partials/sidebar/_menu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXFBhcnRpYWxzXHNpZGViYXJcX21lbnUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/Shared/Partials/_Footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXFBhcnRpYWxzXF9Gb290ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/Shared/Partials/_Header.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXFBhcnRpYWxzXF9IZWFkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/Shared/Partials/_Sidebar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXFBhcnRpYWxzXF9TaWRlYmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/Shared/Partials/_ToastMessage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXFBhcnRpYWxzXF9Ub2FzdE1lc3NhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/UserManager/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlck1hbmFnZXJcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/UserManager/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlck1hbmFnZXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/UserManager/Partial/Details/_OrderHistory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlck1hbmFnZXJcUGFydGlhbFxEZXRhaWxzXF9PcmRlckhpc3RvcnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/UserManager/Partial/Details/_ProfileSection.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlck1hbmFnZXJcUGFydGlhbFxEZXRhaWxzXF9Qcm9maWxlU2VjdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/UserManager/Partial/Index/_UserTableHeader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlck1hbmFnZXJcUGFydGlhbFxJbmRleFxfVXNlclRhYmxlSGVhZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/UserManager/Partial/Index/_UserTableRow.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcVXNlck1hbmFnZXJcUGFydGlhbFxJbmRleFxfVXNlclRhYmxlUm93LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Admin/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Booking/AccommodationDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcQm9va2luZ1xBY2NvbW1vZGF0aW9uRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Booking/Accommodations.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcQm9va2luZ1xBY2NvbW1vZGF0aW9ucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Booking/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcQm9va2luZ1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Booking/Partials/_AccommodationCombo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcQm9va2luZ1xQYXJ0aWFsc1xfQWNjb21tb2RhdGlvbkNvbWJvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Booking/Partials/_AmenitiesFacilities.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcQm9va2luZ1xQYXJ0aWFsc1xfQW1lbml0aWVzRmFjaWxpdGllcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Home/About.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxBYm91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Home/Contact.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxDb250YWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Home/Partials/About/_About.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxQYXJ0aWFsc1xBYm91dFxfQWJvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Home/Partials/About/_Destination.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxQYXJ0aWFsc1xBYm91dFxfRGVzdGluYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Home/Partials/About/_Services.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxQYXJ0aWFsc1xBYm91dFxfU2VydmljZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Home/Partials/About/_Slider.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxQYXJ0aWFsc1xBYm91dFxfU2xpZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Home/Partials/Contact/_Contact.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxQYXJ0aWFsc1xDb250YWN0XF9Db250YWN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Home/Partials/Contact/_Sidebar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxQYXJ0aWFsc1xDb250YWN0XF9TaWRlYmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Home/Partials/Index/_About.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxQYXJ0aWFsc1xJbmRleFxfQWJvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Home/Partials/Index/_ExploreRooms.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxQYXJ0aWFsc1xJbmRleFxfRXhwbG9yZVJvb21zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Home/Partials/Index/_Newsletter.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxQYXJ0aWFsc1xJbmRleFxfTmV3c2xldHRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Home/Partials/Index/_Parallax.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxQYXJ0aWFsc1xJbmRleFxfUGFyYWxsYXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Home/Partials/Index/_Slider.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxQYXJ0aWFsc1xJbmRleFxfU2xpZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Identity/ChangePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSWRlbnRpdHlcQ2hhbmdlUGFzc3dvcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Identity/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSWRlbnRpdHlcTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Identity/Partials/_ProfileMenu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSWRlbnRpdHlcUGFydGlhbHNcX1Byb2ZpbGVNZW51LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Identity/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSWRlbnRpdHlcUHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Identity/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcSWRlbnRpdHlcUmVnaXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Orders/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcT3JkZXJzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Orders/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcT3JkZXJzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Orders/MyOrders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcT3JkZXJzXE15T3JkZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Payment/PaymentReturn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcUGF5bWVudFxQYXltZW50UmV0dXJuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Payment/ProcessPayment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcUGF5bWVudFxQcm9jZXNzUGF5bWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Product/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcUHJvZHVjdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Product/Payment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcUHJvZHVjdFxQYXltZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Product/Return.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcUHJvZHVjdFxSZXR1cm4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Shared/Partials/_Breadcrumb.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcU2hhcmVkXFBhcnRpYWxzXF9CcmVhZGNydW1iLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Shared/Partials/_Footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcU2hhcmVkXFBhcnRpYWxzXF9Gb290ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Shared/Partials/_Header.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcU2hhcmVkXFBhcnRpYWxzXF9IZWFkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/cnpm/LuxenHotel/LuxenHotel/LuxenHotel/LuxenHotel/Areas/Customer/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ3VzdG9tZXJcVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

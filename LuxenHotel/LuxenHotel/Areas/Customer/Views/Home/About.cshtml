@@ -1,0 +1,68 @@
+@{
+    ViewData["Title"] = "About us";
+}
+
+<div class="container">
+    <div class="row">
+        @await Html.PartialAsync("Partials/About/_Slider.cshtml")
+        @await Html.PartialAsync("Partials/About/_About.cshtml")
+        @await Html.PartialAsync("Partials/About/_Services.cshtml")
+        @await Html.PartialAsync("Partials/About/_Destination.cshtml")
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        .destination-map {
+            width: 100%;
+            height: 400px;
+        }
+    </style>
+}
+
+@section Scripts {
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Function to initialize a map for a given tab with specific coordinates
+            function initMap(tabId, lat, lng, zoom) {
+                const mapContainer = document.querySelector(`#${tabId} .destination-map`);
+                if (mapContainer && !mapContainer._leaflet_id) { // Prevent re-initialization
+                    const map = L.map(mapContainer, {
+                        zoomControl: true,
+                        dragging: true,
+                        scrollWheelZoom: false
+                    }).setView([lat, lng], zoom);
+
+                    map.zoomControl.setPosition("topleft");
+
+                    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                    }).addTo(map);
+                }
+            }
+
+            // Initialize maps for all tabs with different coordinates
+            initMap("tab1", -12.043333, -77.028333, 12); // Map Destination (same as original)
+            initMap("tab2", -12.046000, -77.030000, 12); // Bus Destination (slightly different)
+            initMap("tab3", -12.040000, -77.025000, 12); // Own Car (slightly different)
+
+            // Handle tab changes for all tabs
+            document.querySelectorAll('.about-destination-box a[data-toggle="tab"]').forEach(tab => {
+                tab.addEventListener("shown.bs.tab", function (e) {
+                    const targetTabId = e.target.getAttribute("href").substring(1); // e.g., "tab1", "tab2", "tab3"
+                    // Reinitialize map for the active tab
+                    if (targetTabId === "tab1") {
+                        initMap("tab1", -12.043333, -77.028333, 12);
+                    } else if (targetTabId === "tab2") {
+                        initMap("tab2", -12.046000, -77.030000, 12);
+                    } else if (targetTabId === "tab3") {
+                        initMap("tab3", -12.040000, -77.025000, 12);
+                    }
+                });
+            });
+        });
+    </script>
+}

@@ -1,0 +1,91 @@
+@model LuxenHotel.Models.ViewModels.Booking.ComboViewModel
+@using System.Linq
+@using LuxenHotel.Models.ViewModels.Booking
+@{
+    var accommodationServices = ViewBag.AccommodationServices as List<ServiceViewModel> ?? new List<ServiceViewModel>();
+}
+
+<form asp-action="Edit" method="post" id="kt_combo_edit_form" class="form">
+    <div class="scroll-y me-n7 pe-7" id="kt_modal_edit_combo_scroll" data-kt-scroll="true"
+        data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto"
+        data-kt-scroll-dependencies="#kt_modal_edit_combo_header" data-kt-scroll-wrappers="#kt_modal_edit_combo_scroll"
+        data-kt-scroll-offset="300px">
+
+        <div class="row">
+            <div class="col-md-7 scroll-y me-n7 pe-7">
+                @await Html.PartialAsync("Partial/EditForm/_GeneralInfo", Model)
+            </div>
+
+            <div class="col-md-5">
+                @await Html.PartialAsync("Partial/EditForm/_ServicesIncluded", Model)
+            </div>
+        </div>
+    </div>
+
+    <div class="text-end pt-15 mt-5">
+        <a asp-action="Index" class="btn btn-light me-3">Cancel</a>
+        <button type="submit" id="kt_combo_edit_submit" class="btn btn-primary">
+            Save Changes
+        </button>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function () {
+            // Initialize Select2
+            $('.form-select[data-control="select2"]').select2({
+                minimumResultsForSearch: Infinity
+            });
+
+            // Form submission
+            const form = document.querySelector('#kt_combo_edit_form');
+            const submitButton = document.querySelector('#kt_combo_edit_submit');
+
+            form.addEventListener('submit', function (e) {
+                // Prevent default to handle submission manually
+                e.preventDefault();
+
+                // Validate form
+                if (form.checkValidity()) {
+                    // Show loading indication
+                    submitButton.setAttribute('data-kt-indicator', 'on');
+                    submitButton.disabled = true;
+
+                    // Submit form
+                    form.submit();
+                } else {
+                    // Handle invalid form
+                    form.class  classList.add('was-validated');
+                }
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkboxes = document.querySelectorAll('.service-checkbox');
+            const totalPriceEl = document.getElementById('total_price');
+
+            function updateTotalPrice() {
+                let total = 0;
+                checkboxes.forEach(cb => {
+                    if (cb.checked) {
+                        // Lấy giá trị giá từ data-price, parse thành số
+                        const price = parseFloat(cb.getAttribute('data-price')) || 0;
+                        total += price;
+                    }
+                });
+                // Hiển thị tổng giá theo định dạng số có dấu phẩy (N0)
+                totalPriceEl.textContent = total.toLocaleString('vi-VN');
+            }
+
+            // Gắn sự kiện change cho từng checkbox
+            checkboxes.forEach(cb => cb.addEventListener('change', updateTotalPrice));
+
+            // Khởi tạo tổng giá khi load trang
+            updateTotalPrice();
+        });
+    </script>
+}

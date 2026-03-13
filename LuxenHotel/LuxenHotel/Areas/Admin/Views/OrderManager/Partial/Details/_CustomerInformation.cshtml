@@ -1,0 +1,60 @@
+@using LuxenHotel.Models.Entities.Orders;
+@model LuxenHotel.Models.ViewModels.Orders.OrderDetailsViewModel
+
+<div class="card card-flush py-4">
+    <!--begin::Card header-->
+    <div class="card-header">
+        <div class="card-title">
+            <h2>Customer Information</h2>
+        </div>
+    </div>
+
+    <div class="card-body pt-0">
+        <div class="table-responsive">
+            <!--begin::Table-->
+            <table class="table align-middle table-row-bordered mb-0 fs-6 gy-5 min-w-300px">
+                <tbody class="fw-semibold text-gray-600">
+                    <tr>
+                        <td class="text-muted">
+                            <div class="d-flex align-items-center">
+                                <i class="fa-regular fa-circle-user fs-2 me-2"></i>
+                                Customer
+                            </div>
+                        </td>
+
+                        <td class="fw-bold text-end">
+                            <div class="d-flex align-items-center justify-content-end">
+                                <p class="text-gray-600">
+                                    @Model.CustomerName
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-muted">
+                            <div class="d-flex align-items-center">
+                                <i class="fa-regular fa-envelope fs-2 me-2"></i>
+                                Email
+                            </div>
+                        </td>
+                        <td class="fw-bold text-end">
+                            <p class="text-gray-600">
+                                @Model.CustomerEmail
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-muted">
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-phone fs-2 me-2"></i>
+                                Phone
+                            </div>
+                        </td>
+                        <td class="fw-bold text-end">@Model.CustomerPhone</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--end::Table-->
+        </div>
+    </div>
+</div>

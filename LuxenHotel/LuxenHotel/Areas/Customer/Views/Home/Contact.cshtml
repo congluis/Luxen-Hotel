@@ -1,0 +1,41 @@
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<div class="container">
+    <div class="row">
+        @await Html.PartialAsync("Partials/Contact/_Sidebar.cshtml")
+        @await Html.PartialAsync("Partials/Contact/_Contact.cshtml")
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        .maps {
+            width: 100%;
+            height: 400px;
+        }
+    </style>
+}
+
+@section Scripts {
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            if (document.querySelector(".maps")) {
+                const map = L.map("map", {
+                    zoomControl: true,
+                    dragging: true,
+                    scrollWheelZoom: false
+                }).setView([-12.043333, -77.028333], 12);
+
+                map.zoomControl.setPosition("topleft");
+
+                L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
+            }
+        });
+    </script>
+}

@@ -1,0 +1,44 @@
+@{
+    var action = ViewContext.RouteData.Values["Action"] as string;
+    var controller = ViewContext.RouteData.Values["Controller"] as string;
+    var pageTitle = ViewBag.Title?.ToString() ?? "Dashboard";
+    var displayTitle = pageTitle;
+    var controllerDisplayName = controller switch
+    {
+        "AccommodationManagement" => "Accommodations",
+        "ComboManager" => "Combos",
+        "OrderManager" => "Orders",
+        "UserManager" => "Users",
+        "Dashboard" => "Dashboard",
+        _ => controller // Mặc định dùng tên controller
+    };
+}
+
+<div class="page-title d-flex flex-column gap-1 me-3 mb-2">
+    <ul class="breadcrumb text-muted fs-6 fw-semibold mb-6 text-gray-500">
+        <!-- Home -->
+        <li class="breadcrumb-item fw-bold lh-1">
+            <a href="/admin" class="text-gray-500">
+                <i class="ms-2 fas fa-home fs-3 text-gray-500 me-n1"></i>
+            </a>
+        </li>
+
+        <!-- Controller -->
+        <li class="breadcrumb-item fw-bold lh-1">
+            <a asp-area="Admin" asp-controller="@controller" asp-action="Index" class="text-gray-500">
+                @controllerDisplayName
+            </a>
+        </li>
+
+        <!-- Current Page -->
+        @if (action != "Index")
+        {
+            <li class="breadcrumb-item fw-bold lh-1 text-gray-700">
+                @displayTitle
+            </li>
+        }
+    </ul>
+    <h1 class="page-heading d-flex flex-column justify-content-center text-gray-900 fw-bolder fs-1 lh-0">
+        @displayTitle
+    </h1>
+</div>

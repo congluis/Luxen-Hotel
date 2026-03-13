@@ -1,0 +1,18 @@
+// Views/Product/Return.cshtml
+@model PaymentReturnModel
+<h2>Payment Result</h2>
+<div class="alert @(Model.IsSuccess ? "alert-success" : "alert-danger")">
+    @if (Model.IsSuccess)
+    {
+        <h4>Payment Successful!</h4>
+    }
+    else
+    {
+        <h4>Payment Failed!</h4>
+    }
+    <p>Transaction ID: @Model.TransactionId</p>
+    <p>Amount: @Model.Amount.ToString("C")</p>
+    <p>Order Info: @Model.OrderInfo</p>
+    <p>Response Code: @Model.ResponseCode</p>
+</div>
+<a href="@Url.Action("Index")" class="btn btn-primary">Back to Products</a>

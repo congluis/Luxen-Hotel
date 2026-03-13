@@ -1,0 +1,140 @@
+@using System.Text.Json
+@model LuxenHotel.Areas.Admin.Controllers.DashboardViewModel
+
+@functions {
+    IHtmlContent RenderBadge(double percentage)
+    {
+        string badgeClass = "badge-light-info";
+        string iconClass = "fa-solid fa-minus fs-5 ms-n1";
+        string text = $"{percentage:F2}%";
+
+        if (percentage > 0)
+        {
+            badgeClass = "badge-light-success";
+            iconClass = "fa-solid fa-arrow-up me-1 text-success ms-n1";
+        }
+        else if (percentage < 0)
+        {
+            badgeClass = "badge-light-danger";
+            iconClass = "fa-solid fa-arrow-down me-1 text-danger ms-n1";
+        }
+
+        return new HtmlString($@"<span class=""badge {badgeClass} fs-base""><i class=""{iconClass}""></i>{text}</span>");
+    }
+}
+
+
+<div class="card card-flush mb-5">
+    <!--begin::Header-->
+    <div class="card-header pt-5 pb-5">
+        <!--begin::Title-->
+        <div class="card-title d-flex flex-column">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center">
+                <span class="fs-4 fw-semibold text-gray-500 me-1 align-self-start">
+                    <i class="fa-solid fa-dong-sign"></i>
+                </span>
+                <!--begin::Amount-->
+                <span class="fs-2hx fw-bold text-gray-900 me-2 lh-1 ls-n2">
+                    @Model.AverageDailySales.ToString("N0")
+                </span>
+                <!--end::Amount-->
+
+                <!--begin::Badge-->
+                @RenderBadge(Model.AverageDailySalesChangePercentage)
+                <!--end::Badge-->
+            </div>
+            <!--end::Info-->
+
+            <!--begin::Subtitle-->
+            <span class="text-gray-500 pt-1 fw-semibold fs-6">Average Daily Sales</span>
+            <!--end::Subtitle-->
+        </div>
+        <!--end::Title-->
+    </div>
+    <!--end::Header-->
+</div>
+
+<div class="card card-flush mb-5">
+    <!--begin::Header-->
+    <div class="card-header pt-5 pb-5">
+        <!--begin::Title-->
+        <div class="card-title d-flex flex-column">
+            <!--begin::Info-->
+            <div class="d-flex align-items-center">
+                <span class="fs-4 fw-semibold text-gray-500 me-1 align-self-start">
+                    <i class="fa-solid fa-dong-sign"></i>
+                </span>
+                <!--begin::Amount-->
+                <span class="fs-2hx fw-bold text-gray-900 me-2 lh-1 ls-n2">
+                    @Model.SalesThisMonth.ToString("N0")
+                </span>
+                <!--end::Amount-->
+
+                <!--begin::Badge-->
+                @RenderBadge(Model.SalesThisMonthChangePercentage)
+                <!--end::Badge-->
+            </div>
+            <!--end::Info-->
+
+            <!--begin::Subtitle-->
+            <span class="text-gray-500 pt-1 fw-semibold fs-6">Average Daily Sales</span>
+            <!--end::Subtitle-->
+        </div>
+        <!--end::Title-->
+    </div>
+    <!--end::Header-->
+</div>
+
+<div class="card card-flush h-md-60 mb-5 mb-xl-10">
+    <div class="card-header pt-5">
+        <div class="card-title d-flex flex-column">
+            <div class="d-flex align-items-center">
+                <span class="fs-4 fw-semibold text-gray-500 me-1 align-self-start">
+                    <i class="fa-solid fa-dong-sign"></i>
+                </span>
+                <span class="fs-2hx fw-bold text-gray-900 me-2 lh-1 ls-n2">
+                    @Model.ExpectedEarnings.ToString("N0")
+                </span>
+                @RenderBadge(Model.ExpectedEarningsChangePercentage)
+            </div>
+            <span class="text-gray-500 pt-1 fw-semibold fs-6">Expected Earnings</span>
+        </div>
+    </div>
+
+    <div class="card-body pt-2 pb-4 d-flex align-items-center">
+        <div class="d-flex flex-center me-5 pt-2">
+            <div id="earnings_chart" style="min-width: 70px; min-height: 70px" data-kt-size="70" data-kt-line="11"
+                data-confirmed="@Model.ConfirmedEarnings" data-inprogress="@Model.InProgressEarnings"
+                data-completed="@Model.CompletedEarnings">
+            </div>
+        </div>
+        <div class="d-flex flex-column content-justify-center w-100">
+
+            <div class="d-flex fs-6 fw-semibold align-items-center my-3">
+                <div class="bullet w-8px h-6px rounded-2 bg-primary me-3"></div>
+                <div class="text-gray-500 flex-grow-1 me-4">Confirmed</div>
+                <div class="fw-bolder text-gray-700 text-xxl-end">
+                    @Model.ConfirmedEarnings.ToString("N0")
+                    <i class="fa-solid fa-dong-sign"></i>
+                </div>
+            </div>
+            <div class="d-flex fs-6 fw-semibold align-items-center">
+                <div class="bullet w-8px h-6px rounded-2 bg-success me-3"></div>
+                <div class="text-gray-500 flex-grow-1 me-4">In Progress</div>
+                <div class="fw-bolder text-gray-700 text-xxl-end">
+                    @Model.InProgressEarnings.ToString("N0")
+                    <i class="fa-solid fa-dong-sign"></i>
+                </div>
+            </div>
+            <div class="d-flex fs-6 fw-semibold align-items-center my-3">
+                <div class="bullet w-8px h-6px rounded-2 bg-info me-3"></div>
+                <div class="text-gray-500 flex-grow-1 me-4">Completed</div>
+                <div class="fw-bolder text-gray-700 text-xxl-end">
+                    @Model.CompletedEarnings.ToString("N0")
+                    <i class="fa-solid fa-dong-sign"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

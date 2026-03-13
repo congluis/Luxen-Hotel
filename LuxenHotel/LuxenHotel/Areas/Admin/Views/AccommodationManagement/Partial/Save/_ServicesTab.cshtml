@@ -1,0 +1,81 @@
+@model LuxenHotel.Models.ViewModels.Booking.AccommodationViewModel
+
+<div class="tab-pane fade" id="services" role="tabpanel" aria-labelledby="services-tab">
+    <div class="d-flex flex-column gap-7 gap-lg-10">
+        <!--begin::Services Form-->
+        <div id="services-wrapper" class="accordion accordion-icon-collapse" id="servicesAccordion">
+            <!-- Placeholder to add service items -->
+        </div>
+        <!--end::Services Form-->
+
+        <!-- Add new service -->
+        <div class="text-end mt-5">
+            <button type="button" class="btn btn-light-primary" onclick="addServiceItem()">
+                <i class="fa-solid fa-plus fs-2 me-2"></i>Add Service
+            </button>
+        </div>
+
+        <!-- Hidden template for service -->
+        <template id="service-template">
+            <div class="mb-5 service-item card card-flush">
+                <!--begin::Card header (Accordion header)-->
+                <div class="accordion-header card-header py-4 d-flex align-items-center collapsed"
+                    data-bs-toggle="collapse" data-bs-target="#collapseService_0" aria-expanded="true"
+                    aria-controls="collapseService_0">
+                    <span class="accordion-icon me-3 badge badge-square badge-light">
+                        <i class="fa-solid fa-plus fs-3 accordion-icon-off"></i>
+                        <i class="fa-solid fa-minus fs-3 accordion-icon-on"></i>
+                    </span>
+                    <h3 class="fs-4 fw-semibold mb-0 service-index">Service #1</h3>
+                    <!-- Delete button -->
+                    <button type="button" class="btn btn-icon btn-sm btn-light-danger ms-auto"
+                        onclick="removeServiceItem(this)" aria-label="Delete this service">
+                        <i class="fa-solid fa-xmark fs-2"></i>
+                    </button>
+                </div>
+                <!--end::Card header-->
+
+                <!--begin::Card body (Accordion body)-->
+                <div id="collapseService_0" class="collapse fs-6 ps-10" data-bs-parent="#servicesAccordion">
+                    <div class="card-body pt-4">
+                        <div class="row g-5">
+                            <!-- Service Name -->
+                            <div class="col-md-6 fv-row fv-plugins-icon-container">
+                                <label class="form-label required fw-medium" for="service_name_0">Service Name</label>
+                                <input type="text" class="form-control" id="service_name_0"
+                                    placeholder="e.g., Breakfast Buffet" maxlength="255" asp-for="Services[0].Name" />
+                                <div class="text-muted fs-7 mt-1">Specify the name of the service provided with the
+                                    accommodation.</div>
+                                <span asp-validation-for="Services[0].Name" class="invalid-feedback"></span>
+                            </div>
+
+                            <!-- Service Price -->
+                            <div class="col-md-6 fv-row fv-plugins-icon-container">
+                                <label class="form-label required fw-medium" for="service_price_0">Service Price
+                                    (VND)</label>
+                                <input type="number" class="form-control" id="service_price_0"
+                                    placeholder="e.g., 150000" min="0" max="50000000" asp-for="Services[0].Price" />
+                                <div class="text-muted fs-7 mt-1">Set the cost for this service in Vietnamese Dong
+                                    (VND).</div>
+                                <span asp-validation-for="Services[0].Price" class="invalid-feedback"></span>
+                            </div>
+                        </div>
+
+                        <!-- Description (Full Width) -->
+                        <div class="mt-5 fv-row fv-plugins-icon-container">
+                            <label class="form-label fw-medium" for="service_description_0">Description</label>
+                            <textarea class="form-control" id="service_description_0" rows="4"
+                                asp-for="Services[0].Description"
+                                placeholder="e.g., Includes a variety of local and international dishes served daily."></textarea>
+                            <div class="text-muted fs-7 mt-1">
+                                Add details to help guests understand what the service includes.
+                            </div>
+                            <span asp-validation-for="Services[0].Description" class="invalid-feedback"></span>
+                        </div>
+                    </div>
+                </div>
+                <!--end::Card body-->
+            </div>
+        </template>
+    </div>
+</div>

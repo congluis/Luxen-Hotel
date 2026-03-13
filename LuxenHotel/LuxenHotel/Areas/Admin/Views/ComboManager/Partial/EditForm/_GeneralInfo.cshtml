@@ -1,0 +1,58 @@
+@model LuxenHotel.Models.ViewModels.Booking.ComboViewModel
+
+<div class="card card-flush">
+    <div class="card-header">
+        <div class="card-title">
+            <h2>General</h2>
+        </div>
+    </div>
+
+    <div class="card-body pt-0">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="CreatedAt" />
+
+        <div class="fv-row mb-7">
+            <label class="required fw-bold fs-6 mb-2" asp-for="Name">Package Name</label>
+            <input type="text" asp-for="Name" class="form-control form-control-solid mb-3 mb-lg-0"
+                placeholder="Enter combo package name" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="fv-row mb-7">
+            <label class="required fw-bold fs-6 mb-2" asp-for="Price">Price</label>
+            <div class="input-group input-group-solid">
+                <input type="number" asp-for="Price" class="form-control form-control-solid" placeholder="0.00"
+                    step="0.01" max="50000000" />
+            </div>
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+
+        <div class="fv-row mb-7">
+            <label class="required fw-bold fs-6 mb-2" asp-for="Description">Description</label>
+            <textarea asp-for="Description" class="form-control form-control-solid" rows="4"
+                placeholder="Enter package description"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="fv-row mb-7 d-none">
+            <label class="required fw-bold fs-6 mb-2" asp-for="AccommodationId">Accommodation</label>
+            <select asp-for="AccommodationId" class="form-select form-select-solid" data-control="select2"
+                data-placeholder="Select an accommodation"
+                asp-items="@(new SelectList(ViewBag.Accommodations, "Id", "Name"))">
+                <option value="">Select an accommodation</option>
+            </select>
+            <span asp-validation-for="AccommodationId" class="text-danger"></span>
+        </div>
+
+        <div class="fv-row mb-7">
+            <label class="required fw-bold fs-6 mb-2" asp-for="Status">Status</label>
+            <select class="form-select form-select-solid form-select-sm" asp-for="Status" data-control="select2"
+                data-hide-search="true" asp-items="@(new List<SelectListItem> {
+                                                                                                                                            new SelectListItem { Text = "Published", Value = ((int)LuxenHotel.Models.Entities.Booking.Combo.ComboStatus.Published).ToString(), Selected = Model.Status == LuxenHotel.Models.Entities.Booking.Combo.ComboStatus.Published },
+                                                                                                                                            new SelectListItem { Text = "Unpublished", Value = ((int)LuxenHotel.Models.Entities.Booking.Combo.ComboStatus.Unpublished).ToString(), Selected = Model.Status == LuxenHotel.Models.Entities.Booking.Combo.ComboStatus.Unpublished }
+                                                                                                                                        })">
+            </select>
+            <span asp-validation-for="Status" class="text-danger"></span>
+        </div>
+    </div>
+</div>

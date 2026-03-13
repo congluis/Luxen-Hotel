@@ -1,0 +1,94 @@
+@model LuxenHotel.Models.ViewModels.Booking.AccommodationDetailsViewModel
+@using LuxenHotel.Models.ViewModels.Booking
+
+@if (Model.Combos.Any())
+{
+    <div class="container">
+        <h3 class="fw-bold mb-10">Our Combo Services</h3>
+        <p class="text-muted mb-20">Enhance your stay with special packages</p>
+
+        @foreach (var combo in Model.Combos)
+        {
+            <div class="panel panel-default combo-panel">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <h4 class="combo-title">@combo.Name</h4>
+
+                            @if (!string.IsNullOrEmpty(combo.Description))
+                            {
+                                <p class="text-muted">@combo.Description</p>
+                            }
+
+                            @if (combo.Services != null && combo.Services.Any())
+                            {
+                                <h5 class="text-primary">Included Services:</h5>
+                                <ul class="list-unstyled">
+                                    @foreach (var service in combo.Services)
+                                    {
+                                        <li>
+                                            <i class="fa fa-check-circle text-success"></i>
+                                            @service.Name
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                        </div>
+
+                        <div class="col-sm-4 text-center">
+                            <div class="pricing-box">
+                                <p class="combo-price">
+                                    @combo.Price.ToString("#,##0 ")
+                                    <i class="fa fa-dong-sign" style="font-size: 0.9em;"></i>
+                                </p>
+                             
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+<style>
+    .combo-panel {
+        margin-bottom: 25px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        transition: all 0.3s ease;
+    }
+
+    .combo-title {
+        font-size: 20px;
+        font-weight: bold;
+        color: #2c3e50;
+        margin-bottom: 10px;
+    }
+
+    .combo-price {
+        font-size: 24px;
+        font-weight: bold;
+        color: #f94c43;
+        margin-bottom: 15px;
+    }
+
+    .pricing-box {
+        background: #f9f9f9;
+        padding: 15px;
+        border-radius: 4px;
+        margin-top: 10px;
+    }
+
+    .btn-block {
+        margin-top: 10px;
+    }
+</style>
+
+<script>
+    $(document).ready(function () {
+        $('.btn-primary').on('click', function () {
+            alert('Booking functionality to be implemented');
+        });
+    });
+</script>

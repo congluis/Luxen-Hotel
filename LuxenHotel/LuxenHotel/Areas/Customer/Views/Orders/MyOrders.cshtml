@@ -1,0 +1,223 @@
+@model IEnumerable<LuxenHotel.Models.Entities.Orders.Orders>
+@{
+    ViewData["Title"] = "My Orders";
+}
+
+@section Styles {
+    <!-- DataTables CSS -->
+    <link href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap.min.css" rel="stylesheet"/>
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
+    <style>
+    body {
+        background-color: #f5f5f5;
+    }
+
+    .card {
+        border: none;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+        background-color: #337ab7;
+        color: white;
+        border-radius: 8px 8px 0 0;
+    }
+
+    .card-header h6 {
+        margin: 0;
+        font-size: 18px;
+    }
+
+    .table th {
+        background-color: #f8f9fa;
+        border-top: none;
+    }
+
+    .table td {
+        vertical-align: middle;
+    }
+
+    .badge {
+        padding: 6px 12px;
+        font-size: 12px;
+        font-weight: normal;
+    }
+
+    .btn-sm {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+
+    .modal-content {
+        border-radius: 8px;
+    }
+
+    .modal-header {
+        background-color: #d9534f;
+        color: white;
+        border-radius: 8px 8px 0 0;
+    }
+
+    .modal-header .close {
+        color: white;
+        opacity: 0.8;
+    }
+
+    .modal-header .close:hover {
+        opacity: 1;
+    }
+
+    .form-control:focus {
+        border-color: #337ab7;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(51, 122, 183, .6);
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        padding: 0;
+        margin: 0 2px;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+        background: #337ab7;
+        border-color: #337ab7;
+        color: white !important;
+    }
+</style>
+}
+
+<div class="container mt-5">
+    <div class="mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="ordersTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr>
+                        <th style="display: none"></th>
+                        <th>Order Code</th>
+                        <th>Accommodation</th>
+                        <th>Check-in Date</th>
+                        <th>Check-out Date</th>
+                        <th>Status</th>
+                        <th>Total Price</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @if (Model.Count() == 0)
+                    {
+                        <tr>
+                            <td colspan="7" class="text-center">You don't have any orders yet.</td>
+                        </tr>
+                    }
+                    else
+                    {
+                        @foreach (var order in Model)
+                        {
+                            <tr>
+                                <td style="display: none">@order.CreatedAt</td>
+                                <td>@order.OrderCode</td>
+                                <td>@(order.Accommodation?.Name ?? "N/A")</td>
+                                <td>@order.CheckInDate.ToString("dd/MM/yyyy")</td>
+                                <td>@order.CheckOutDate.ToString("dd/MM/yyyy")</td>
+                                <td>
+                                    @switch (order.Status)
+                                    {
+                                        case LuxenHotel.Models.Entities.Orders.OrderStatus.Created:
+                                            <span class="badge badge-primary">Created</span>
+                                            break;
+                                        case LuxenHotel.Models.Entities.Orders.OrderStatus.Confirmed:
+                                            <span class="badge badge-success">Confirmed</span>
+                                            break;
+                                        case LuxenHotel.Models.Entities.Orders.OrderStatus.Completed:
+                                            <span class="badge badge-info">Completed</span>
+                                            break;
+                                        case LuxenHotel.Models.Entities.Orders.OrderStatus.Cancelled:
+                                            <span class="badge badge-danger">Cancelled</span>
+                                            break;
+                                        default:
+                                            <span class="badge badge-default">@order.Status</span>
+                                            break;
+                                    }
+                                </td>
+                                <td>@order.TotalPrice.ToString("N0") VND</td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a asp-action="Details" asp-route-id="@order.Id" class="btn btn-info btn-sm me-10">
+                                            <i class="fas fa-info-circle"></i> Details
+                                        </a>
+                                        @if (order.Status == LuxenHotel.Models.Entities.Orders.OrderStatus.Created)
+                                        {
+                                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                                    data-target="#cancelModal-@order.Id">
+                                                <i class="fas fa-times"></i> Cancel
+                                            </button>
+                                        }
+                                    </div>
+                                </td>
+                            </tr>
+                            <!-- Cancel Modal -->
+                            <div class="modal fade" id="cancelModal-@order.Id" tabindex="-1" role="dialog"
+                                 aria-labelledby="cancelModalLabel-@order.Id" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="cancelModalLabel-@order.Id">Cancel Order</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <form asp-action="Cancel" asp-route-id="@order.Id" method="post">
+                                            @Html.AntiForgeryToken()
+                                            <div class="modal-body">
+                                                <p>
+                                                    Are you sure you want to cancel order <strong>@order.OrderCode</strong>?
+                                                </p>
+                                                <p>Please provide a reason for cancellation:</p>
+                                                <textarea name="reason" class="form-control" rows="4" required
+                                                  placeholder="Enter cancellation reason"></textarea>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default"
+                                                        data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                                <button type="submit" class="btn btn-danger">Confirm Cancellation</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap.min.js"></script>
+    <script>
+    $(document).ready(function () {
+        $('#ordersTable').DataTable({
+            responsive: true,
+            pageLength: 10,
+            lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            order: [[0, 'desc']], // Default sort by Check-in Date descending
+            columnDefs: [
+                { targets: 6, orderable: false, searchable: false }, // Actions column
+                { targets: [0, 1, 4], searchable: true } // Searchable columns
+            ],
+            language: {
+                emptyTable: "You don't have any orders yet.",
+                zeroRecords: "No matching orders found"
+            }
+        });
+    });
+</script>
+}

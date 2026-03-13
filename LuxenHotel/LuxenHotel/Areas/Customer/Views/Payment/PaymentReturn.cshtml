@@ -1,0 +1,184 @@
+﻿@model PaymentReturnModel
+@{
+    ViewData["Title"] = Model.IsSuccess ? "Payment Successful" : "Payment Failed";
+}
+
+@section Styles
+{
+    <style>
+    .card {
+        border-radius: 8px;
+        border: none;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease-in-out;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    .card-header {
+        border-radius: 8px 8px 0 0;
+        padding: 20px;
+    }
+    .card-header.success {
+        background: linear-gradient(to right, #5cb85c, #449d44);
+    }
+    .card-header.danger {
+        background: linear-gradient(to right, #d9534f, #c9302c);
+    }
+    .card-body {
+        padding: 30px;
+    }
+    .text-center .fa {
+        font-size: 3rem;
+        margin-bottom: 15px;
+    }
+    .text-center h4 {
+        font-size: 20px;
+        color: #333;
+        margin-bottom: 10px;
+    }
+    .text-center p {
+        font-size: 15px;
+        color: #555;
+    }
+    .payment-details h5 {
+        font-size: 18px;
+        margin-bottom: 15px;
+        color: #333;
+    }
+    .table {
+        background-color: #fff;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    .table th {
+        background-color: #f5faff;
+        color: #333;
+        font-weight: 600;
+        padding: 12px;
+    }
+    .table td {
+        padding: 12px;
+        font-size: 15px;
+        color: #555;
+    }
+    .badge.success {
+        background-color: #5cb85c;
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+    .badge.danger {
+        background-color: #d9534f;
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+    .btn-primary {
+        background-color: #337ab7;
+        border-color: #2e6da4;
+        padding: 12px 20px;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover {
+        background-color: #286090;
+        border-color: #204d74;
+    }
+    .btn-outline-secondary {
+        border-color: #ccc;
+        color: #333;
+        padding: 12px 20px;
+        font-size: 16px;
+        transition: all 0.3s ease;
+    }
+    .btn-outline-secondary:hover {
+        background-color: #f5f5f5;
+        border-color: #999;
+    }
+    .btn-group {
+        margin-top: 20px;
+    }
+    .container {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+</style>
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="card">
+                <div class="card-header @(Model.IsSuccess ? "success" : "danger") text-white">
+                    <h3 class="mb-0">@(Model.IsSuccess ? "Payment Successful" : "Payment Failed")</h3>
+                </div>
+                <div class="card-body">
+                    @if (Model.IsSuccess)
+                    {
+                        <div class="text-center mb-4">
+                            <i class="fa fa-check-circle text-success"></i>
+                            <h4 class="mt-3">Thank you for your payment!</h4>
+                            <p>Your booking has been confirmed.</p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="text-center mb-4">
+                            <i class="fa fa-times-circle text-danger"></i>
+                            <h4 class="mt-3">Payment Failed</h4>
+                            <p>Unfortunately, your payment could not be processed.</p>
+                        </div>
+                    }
+
+                    <div class="payment-details">
+                        <h5>Payment Details</h5>
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr>
+                                <th>Amount</th>
+                                <td>@Model.Amount.ToString("N0") VND</td>
+                            </tr>
+                            <tr>
+                                <th>Order Info</th>
+                                <td>@Model.OrderInfo</td>
+                            </tr>
+                            <tr>
+                                <th>Status</th>
+                                <td>
+                                    @if (Model.IsSuccess)
+                                    {
+                                        <span class="badge success">Success</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge danger">Failed (Code: @Model.ResponseCode)</span>
+                                    }
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <form class="text-center">
+                        <div class="btn-group">
+                            @if (Model.IsSuccess)
+                            {
+                                <a href="/orders/myorders" class="btn btn-primary">
+                                    View My Bookings
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Index", "Orders")" class="btn btn-primary">
+                                    Try Again
+                                </a>
+                            }
+                            <a href="@Url.Action("Index", "Home")" class="btn btn-outline-secondary">
+                                Return to Home
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

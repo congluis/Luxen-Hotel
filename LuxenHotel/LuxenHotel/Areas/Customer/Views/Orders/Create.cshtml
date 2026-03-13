@@ -1,0 +1,505 @@
+@model LuxenHotel.Models.ViewModels.OrderCreateViewModel
+@using LuxenHotel.Models.Entities.Booking
+@using LuxenHotel.Models.Entities.Orders
+@{
+    ViewData["Title"] = "Create Order";
+    var accommodations = ViewData["Accommodations"] as List<Accommodation>;
+    var services = ViewData["Services"] as List<Service>;
+    var combos = ViewData["Combos"] as List<Combo>;
+    var accommodation = accommodations?.FirstOrDefault();
+}
+
+<div class="container">
+    @if (accommodation != null)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Accommodation Details</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                @if (!string.IsNullOrEmpty(accommodation.Thumbnail))
+                                {
+                                    <img src="@accommodation.Thumbnail" alt="@accommodation.Name"
+                                        class="img-responsive thumbnail" />
+                                }
+                                else
+                                {
+                                    <img src="/images/no-image.jpg" alt="No Image" class="img-responsive thumbnail" />
+                                }
+                            </div>
+                            <div class="col-md-8">
+                                <h4>@accommodation.Name</h4>
+                                @* <p class="text-muted">@accommodation.Address</p> *@
+                                <p>@Html.Raw(accommodation.Description)</p>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p><strong>Price:</strong> @accommodation.Price.ToString("N0") VND</p>
+                                        <p><strong>Capacity:</strong> @accommodation.MaxOccupancy guests</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <form asp-action="Create" asp-route-accommodationId="@Model.AccommodationId" method="post" class="form-horizontal">
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+        <input type="hidden" asp-for="AccommodationId" />
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Customer Information</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label asp-for="CustomerName" class="col-md-4 control-label">Full Name</label>
+                            <div class="col-md-8">
+                                <input asp-for="CustomerName" class="form-control" placeholder="Enter your full name" />
+                                <span asp-validation-for="CustomerName" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="CustomerEmail" class="col-md-4 control-label">Email Address</label>
+                            <div class="col-md-8">
+                                <input asp-for="CustomerEmail" class="form-control"
+                                    placeholder="Enter your email address" />
+                                <span asp-validation-for="CustomerEmail" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="CustomerPhone" class="col-md-4 control-label">Phone Number</label>
+                            <div class="col-md-8">
+                                <input asp-for="CustomerPhone" class="form-control"
+                                    placeholder="Enter your phone number" />
+                                <span asp-validation-for="CustomerPhone" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Booking Details</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="CheckInDate" class="col-md-4 control-label">Check-in</label>
+                                    <div class="col-md-8">
+                                        <div class="input-group date" id="checkin-datepicker">
+                                            <input asp-for="CheckInDate" class="form-control" type="date" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                        <span asp-validation-for="CheckInDate" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="CheckOutDate" class="col-md-4 control-label">Check-out</label>
+                                    <div class="col-md-8">
+                                        <div class="input-group date" id="checkout-datepicker">
+                                            <input asp-for="CheckOutDate" class="form-control" type="date" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                        <span asp-validation-for="CheckOutDate" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="NumberOfGuests" class="col-md-4 control-label">Number of Guests</label>
+                            <div class="col-md-8">
+                                <input asp-for="NumberOfGuests" class="form-control" type="number" min="1" max="50" />
+                                <span asp-validation-for="NumberOfGuests" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="SpecialRequests" class="col-md-4 control-label">Special Requests</label>
+                            <div class="col-md-8">
+                                <textarea asp-for="SpecialRequests" class="form-control" rows="3"
+                                    placeholder="Enter any special requests or notes"></textarea>
+                                <span asp-validation-for="SpecialRequests" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Payment Information</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label asp-for="PaymentMethod" class="col-md-4 control-label">Payment Method</label>
+                            <div class="col-md-8">
+                                <select asp-for="PaymentMethod" class="form-control"
+                                    asp-items="Html.GetEnumSelectList<PaymentMethod>()"></select>
+                                <span asp-validation-for="PaymentMethod" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="payment-method-details" id="payment-details">
+                            <div id="cash-details" class="payment-detail-section">
+                                <div class="alert alert-info">
+                                    <p>You will pay at reception during check-in.</p>
+                                </div>
+                            </div>
+                            <div id="credit-card-details" class="payment-detail-section" style="display: none;">
+                                <div class="alert alert-info">
+                                    <p>You will be redirected to our secure payment gateway after submitting your
+                                        booking.</p>
+                                </div>
+                            </div>
+                            <div id="vnpay-details" class="payment-detail-section" style="display: none;">
+                                <div class="alert alert-info">
+                                    <p>You will be redirected to VNPay after submitting your booking.</p>
+                                </div>
+                            </div>
+                            <div id="paypal-details" class="payment-detail-section" style="display: none;">
+                                <div class="alert alert-info">
+                                    <p>You will be redirected to PayPal after submitting your booking.</p>
+                                </div>
+                            </div>
+                            <div id="momo-details" class="payment-detail-section" style="display: none;">
+                                <div class="alert alert-info">
+                                    <p>You will be redirected to MoMo after submitting your booking.</p>
+                                </div>
+                            </div>
+                            <div id="bank-transfer-details" class="payment-detail-section" style="display: none;">
+                                <div class="alert alert-info">
+                                    <p>Please transfer to the following account:</p>
+                                    <p><strong>Bank:</strong> Example Bank</p>
+                                    <p><strong>Account Number:</strong> 123456789</p>
+                                    <p><strong>Account Name:</strong> Luxen Hotel</p>
+                                    <p>Include your name and email in the transfer description.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Order Summary</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div id="price-calculation">
+                            <table class="table table-striped">
+                                <tbody>
+                                    <tr>
+                                        <td>Accommodation</td>
+                                        <td class="text-right" id="accommodation-price">
+                                            @(accommodation?.Price.ToString("N0")) VND</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Number of nights</td>
+                                        <td class="text-right" id="nights-count">1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Selected services</td>
+                                        <td class="text-right" id="services-price">0 VND</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Selected combos</td>
+                                        <td class="text-right" id="combos-price">0 VND</td>
+                                    </tr>
+                                    <tr class="info">
+                                        <th>Total</th>
+                                        <th class="text-right" id="total-price">@(accommodation?.Price.ToString("N0"))
+                                            VND</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                @if (services != null && services.Any())
+                {
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Available Services</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="services-list">
+                                @for (int i = 0; i < services.Count; i++)
+                                {
+                                    var service = services[i];
+                                    <div class="service-item">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" class="service-checkbox" name="selectedServiceIds"
+                                                    value="@service.Id" />
+                                                <strong>@service.Name</strong> - @service.Price.ToString("N0") VND
+                                            </label>
+                                        </div>
+                                        <p class="service-description text-muted">@service.Description</p>
+                                        <div class="service-quantity form-group" style="display: none;">
+                                            <div class="input-group">
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn btn-default btn-sm quantity-minus"><span
+                                                            class="glyphicon glyphicon-minus"></span></button>
+                                                </span>
+                                                <input type="number" name="serviceQuantities"
+                                                    class="form-control input-sm quantity-input" value="1" min="1" max="100" />
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn btn-default btn-sm quantity-plus"><span
+                                                            class="glyphicon glyphicon-plus"></span></button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                @if (combos != null && combos.Any())
+                {
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Available Combos</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="combos-list">
+                                @foreach (var combo in combos)
+                                {
+                                    <div class="combo-item">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" class="combo-checkbox" name="selectedComboIds"
+                                                    value="@combo.Id" />
+                                                <strong>@combo.Name</strong> - @combo.Price.ToString("N0") VND
+                                            </label>
+                                        </div>
+                                        <p class="combo-description text-muted">@combo.Description</p>
+                                        <div class="combo-quantity form-group" style="display: none;">
+                                            <div class="input-group">
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn btn-default btn-sm quantity-minus"><span
+                                                            class="glyphicon glyphicon-minus"></span></button>
+                                                </span>
+                                                <input type="number" name="comboQuantities"
+                                                    class="form-control input-sm quantity-input" value="1" min="1" max="100" />
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn btn-default btn-sm quantity-plus"><span
+                                                            class="glyphicon glyphicon-plus"></span></button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Create Order</button>
+                </div>
+                <div class="form-group">
+                    <a asp-action="Index" class="btn btn-default btn-block">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $(document).ready(function () {
+            // Initialize datepickers
+            $('#checkin-datepicker').datepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                startDate: '@DateTime.Today.ToString("yyyy-MM-dd")'
+            });
+
+            $('#checkout-datepicker').datepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                startDate: '@DateTime.Today.AddDays(1).ToString("yyyy-MM-dd")'
+            });
+
+            // Handle date changes for price calculation
+            function calculateNights() {
+                var checkIn = new Date($('#CheckInDate').val());
+                var checkOut = new Date($('#CheckOutDate').val());
+
+                if (checkIn && checkOut && checkOut > checkIn) {
+                    var timeDiff = checkOut.getTime() - checkIn.getTime();
+                    var nights = Math.ceil(timeDiff / (1000 * 3600 * 24));
+                    $('#nights-count').text(nights);
+                    updateTotalPrice();
+                }
+            }
+
+            $('#CheckInDate, #CheckOutDate').change(calculateNights);
+
+            // Show/hide payment method details
+            $('#PaymentMethod').change(function () {
+                $('.payment-detail-section').hide();
+                var method = $(this).val().toLowerCase();
+
+                switch (method) {
+                    case '0':
+                        $('#cash-details').show();
+                        break;
+                    case '1':
+                        $('#credit-card-details').show();
+                        break;
+                    case '2':
+                        $('#vnpay-details').show();
+                        break;
+                    case '3':
+                        $('#paypal-details').show();
+                        break;
+                    case '4':
+                        $('#momo-details').show();
+                        break;
+                    case '5':
+                        $('#bank-transfer-details').show();
+                        break;
+                }
+            });
+
+            // Trigger initially to show the right section
+            $('#PaymentMethod').trigger('change');
+
+            // Service selection and quantity
+            $('.service-checkbox').change(function () {
+                var quantityDiv = $(this).closest('.service-item').find('.service-quantity');
+                if ($(this).is(':checked')) {
+                    quantityDiv.show();
+                } else {
+                    quantityDiv.hide();
+                }
+                updateTotalPrice();
+            });
+
+            // Combo selection and quantity
+            $('.combo-checkbox').change(function () {
+                var quantityDiv = $(this).closest('.combo-item').find('.combo-quantity');
+                if ($(this).is(':checked')) {
+                    quantityDiv.show();
+                } else {
+                    quantityDiv.hide();
+                }
+                updateTotalPrice();
+            });
+
+            // Quantity increment/decrement buttons
+            $('.quantity-plus').click(function () {
+                var input = $(this).closest('.input-group').find('.quantity-input');
+                var value = parseInt(input.val());
+                if (value < 100) {
+                    input.val(value + 1);
+                    input.trigger('change');
+                }
+            });
+
+            $('.quantity-minus').click(function () {
+                var input = $(this).closest('.input-group').find('.quantity-input');
+                var value = parseInt(input.val());
+                if (value > 1) {
+                    input.val(value - 1);
+                    input.trigger('change');
+                }
+            });
+
+            // Update price when quantity changes
+            $('.quantity-input').change(function () {
+                updateTotalPrice();
+            });
+
+            // Update total price calculation
+            function updateTotalPrice() {
+                var accommodationPrice = @(accommodation?.Price ?? 0);
+                var nights = parseInt($('#nights-count').text()) || 1;
+                var servicesPrice = 0;
+                var combosPrice = 0;
+
+                // Calculate services price
+                $('.service-checkbox:checked').each(function () {
+                    var serviceId = $(this).val();
+                    var quantity = parseInt($(this).closest('.service-item').find('.quantity-input').val());
+                    var price = getServicePrice(serviceId);
+                    servicesPrice += price * quantity;
+                });
+
+                // Calculate combos price
+                $('.combo-checkbox:checked').each(function () {
+                    var comboId = $(this).val();
+                    var quantity = parseInt($(this).closest('.combo-item').find('.quantity-input').val());
+                    var price = getComboPrice(comboId);
+                    combosPrice += price * quantity;
+                });
+
+                // Update displayed prices
+                $('#accommodation-price').text(formatPrice(accommodationPrice) + ' VND');
+                $('#services-price').text(formatPrice(servicesPrice) + ' VND');
+                $('#combos-price').text(formatPrice(combosPrice) + ' VND');
+
+                // Calculate and update total
+                var total = (accommodationPrice * nights) + servicesPrice + combosPrice;
+                $('#total-price').text(formatPrice(total) + ' VND');
+            }
+
+            // Format price with thousands separator
+            function formatPrice(price) {
+                return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+
+            // Get service price by ID
+            function getServicePrice(serviceId) {
+                                                                                        @foreach (var service in services ?? new List<Service>())
+                    {
+                        <text>
+                            if (serviceId == '@service.Id') return @service.Price;
+                        </text>
+                }
+                                                                                        return 0;
+            }
+
+            // Get combo price by ID
+            function getComboPrice(comboId) {
+                                                                                        @foreach (var combo in combos ?? new List<Combo>())
+                    {
+                        <text>
+                            if (comboId == '@combo.Id') return @combo.Price;
+                        </text>
+                }
+                                                                                        return 0;
+            }
+
+            // Initialize calculation
+            calculateNights();
+        });
+    </script>
+}

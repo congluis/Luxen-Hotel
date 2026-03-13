@@ -1,0 +1,54 @@
+@using LuxenHotel.Models.Entities.Orders;
+@model LuxenHotel.Models.ViewModels.Orders.OrderDetailsViewModel
+
+@if (Model.Services.Any())
+{
+    var totalPrice = Model.Services.Sum(s => s.Price * s.Quantity);
+
+    <div class="card card-flush py-4">
+        <div class="card-header">
+            <div class="card-title">
+                <h2>Services</h2>
+            </div>
+        </div>
+        <div class="card-body pt-0">
+            <div class="table-responsive">
+                <table class="table align-middle table-row-dashed fs-6 gy-5">
+                    <thead>
+                        <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
+                            <th class="min-w-200px">Service</th>
+                            <th></th>
+                            <th class="min-w-100px text-end pe-5">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var service in Model.Services)
+                        {
+                            <tr>
+                                <td>@service.ServiceName</td>
+                                <td></td>
+                                <td class="text-end pe-5">
+                                    @(service.Price* service.Quantity) <i class="fa-solid fa-dong-sign"></i>
+                                </td>
+                            </tr>
+                        }
+
+                        <!-- Total Row -->
+                        <tr class="fw-bold text-gray-700 border-top">
+                            <td class=" pe-5">
+                                Accommodation: @Model.AccommodationName -
+                                @(((int)ViewBag.AccommodationPrice).ToString("N0"))
+                                <i class="fa-solid fa-dong-sign"></i>
+                            </td>
+                            <td class="text-center pe-5">Total</td>
+                            <td class="text-end pe-5">
+                                @Model.TotalPrice.ToString("N0") <i class="fa-solid fa-dong-sign"></i>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}

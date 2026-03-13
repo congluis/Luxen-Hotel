@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+        @(ViewData["Title"] != null ? $"{ViewData["Title"]} - " : "")Luxen Premium Hotel
+    </title>
+
+    @Html.Favicon("/favicon.ico")
+    @Html.LibStyle("bootstrap/css/bootstrap.min.css")
+    @Html.LibStyle("flexslider/css/flexslider.css")
+    @Html.LibStyle("prettyphoto/css/prettyPhoto.css")
+    @Html.LibStyle("datepicker/css/datepicker.css")
+    @Html.LibStyle("selectordie/css/selectordie.css")
+    @Html.CssStyle("main.css")
+    @Html.CssStyle("responsive.css")
+    @Html.CdnCss("https://cdnjs.cloudflare.com/ajax/libs/flag-icons/7.3.2/css/flag-icons.min.css")
+
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+
+<body>
+    <div id="wrapper">
+        @await Html.PartialAsyncFromArea("Customer", "Partials/_Header")
+
+        <div class="content">
+            @Html.RenderIf(ViewData["Title"] != null, () => Html.PartialAsyncFromArea("Customer", "Partials/_Breadcrumb").Result)
+
+            @RenderBody()
+
+            @await Html.PartialAsyncFromArea("Customer", "Partials/_Footer")
+        </div>
+    </div>
+
+    @Html.LibScript("jquery/jquery-1.11.1.min.js")
+    @Html.LibScript("bootstrap/js/bootstrap.min.js")
+    @Html.LibScript("retina/retina-1.1.0.min.js")
+    @Html.LibScript("flexslider/js/jquery.flexslider-min.js")
+    @Html.LibScript("superfish/superfish.pack.1.4.1.js")
+    @Html.LibScript("prettyphoto/js/jquery.prettyPhoto.js")
+    @Html.LibScript("datepicker/js/bootstrap-datepicker.js")
+    @Html.LibScript("selectordie/js/selectordie.min.js")
+    @Html.LibScript("slicknav/jquery.slicknav.min.js")
+    @Html.LibScript("parallax/jquery.parallax-1.1.3.js")
+    @Html.JsScript("auth.js")
+    @Html.JsScript("main.js")
+
+    @await RenderSectionAsync("Scripts", required: false)
+    <!-- ...existing code... -->
+    @RenderBody()
+    <script src="http://localhost:3000/tracker.js"></script>
+</body>
+</html>

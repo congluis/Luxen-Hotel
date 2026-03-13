@@ -1,0 +1,49 @@
+@model IEnumerable<LuxenHotel.Areas.Admin.Controllers.UserListViewModel>
+
+@section Styles {
+    @Html.LibStyle("datatables/datatables.bundle.css")
+}
+
+@section Scripts {
+    @Html.LibScript("datatables/datatables.bundle.js")
+
+    @Html.JsScript("user-listing.js")
+}
+
+<div class="card card-flush">
+    <div class="card-header align-items-center py-5 gap-2 gap-md-5">
+        <div class="card-title">
+            <div class="d-flex align-items-center position-relative my-1">
+                <i class="fa-solid fa-magnifying-glass fs-3 position-absolute ms-4"></i>
+                <input type="text" data-filter="search" class="form-control form-control-solid w-250px ps-12"
+                    placeholder="Search User" />
+            </div>
+        </div>
+        <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
+            <div class="w-100 mw-200px">
+                <select class="form-select form-select-solid" data-control="select2" data-placeholder="Role"
+                    data-filter="role-filter">
+                    <option value="">All Roles</option>
+                    @foreach (var r in Model)
+                    {
+                        <option value="@r.Id">@r.Roles</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+    <!--begin::Card body-->
+    <div class="card-body pt-0">
+        <!--begin::Table-->
+        <div class="dt-container dt-bootstrap5 dt-empty-footer">
+            <div class="table-responsive">
+                <table class="table align-middle table-row-dashed fs-6 gy-5" id="user_table">
+                    @Html.Partial("Partial/Index/_UserTableHeader")
+                    <tbody class="fw-semibold text-gray-600">
+                        @Html.Partial("Partial/Index/_UserTableRow", Model)
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

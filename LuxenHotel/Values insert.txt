@@ -1,0 +1,57 @@
+-- Accommodation
+INSERT INTO Accommodations (Name, Price, Description, Media, IsAvailable, MaxOccupancy, Area, CreatedAt)
+VALUES
+    ('Phòng Deluxe', 1000000, 'Phòng sang trọng với view biển', '["image1.jpg", "image2.jpg"]', 1, 4, 30.5, GETUTCDATE()),
+    ('Phòng Suite', 2000000, 'Phòng cao cấp với ban công', '["image3.jpg"]', 1, 6, 50.0, GETUTCDATE());
+
+-- Service
+INSERT INTO Services (Name, Price, Description, AccommodationId, CreatedAt)
+VALUES
+    ('Bữa sáng', 100000.00, 'Bữa sáng tự chọn', 1, GETUTCDATE()),
+    ('Wi-Fi', 50000.00, 'Internet tốc độ cao', 1, GETUTCDATE()),
+    ('Bữa sáng', 120000.00, 'Bữa sáng cao cấp', 2, GETUTCDATE()),
+    ('Dọn phòng', 80000.00, 'Dịch vụ dọn phòng hàng ngày', 2, GETUTCDATE());
+
+-- Combo
+INSERT INTO Combos (Name, Price, Description, Discount, CreatedAt)
+VALUES
+    ('Combo Nghỉ Dưỡng', 2500000, 'Gói nghỉ dưỡng bao gồm phòng và bữa sáng', 10.00, GETUTCDATE()),
+    ('Combo Gia Đình', 4000000, 'Gói dành cho gia đình với các dịch vụ bổ sung', 15.00, GETUTCDATE());
+
+-- ComboService
+INSERT INTO ComboServices (ComboId, ServiceId, CreatedAt)
+VALUES
+    (1, 1, GETUTCDATE()), -- Combo Nghỉ Dưỡng + Bữa sáng (Phòng Deluxe)
+    (1, 2, GETUTCDATE()), -- Combo Nghỉ Dưỡng + Wi-Fi (Phòng Deluxe)
+    (2, 3, GETUTCDATE()), -- Combo Gia Đình + Bữa sáng (Phòng Suite)
+    (2, 4, GETUTCDATE()); -- Combo Gia Đình + Dọn phòng (Phòng Suite)
+
+-- AccommodationCombo
+INSERT INTO AccommodationCombo (AccommodationsId, CombosId)
+VALUES
+    (1, 1), -- Phòng Deluxe + Combo Nghỉ Dưỡng
+    (2, 1), -- Phòng Suite + Combo Nghỉ Dưỡng
+    (2, 2); -- Phòng Suite + Combo Gia Đình
+
+-- Booking
+INSERT INTO Bookings (
+    AccommodationId,
+    ComboId,
+    ServicesJson,
+    ServiceQuantitiesJson,
+    CheckInDate,
+    CheckOutDate,
+    TotalPrice,
+    Status,
+    GuestName,
+    GuestContact,
+    Notes,
+    CreatedAt
+)
+VALUES
+    -- Trường hợp 1: Chỉ đặt Combo
+    (NULL, 1, NULL, NULL, NULL, NULL, 2250000.00, 'Confirmed', 'Nguyễn Văn A', '0901234567', 'Yêu cầu giao combo sớm', GETUTCDATE()),
+    -- Trường hợp 2: Chỉ đặt Accommodation
+    (1, NULL, NULL, NULL, '2025-05-01 14:00:00', '2025-05-03 12:00:00', 2000000.00, 'Pending', 'Trần Thị B', '0912345678', NULL, GETUTCDATE()),
+    -- Trường hợp 3: Đặt Accommodation kèm Service
+    (2, NULL, '[3, 4]', '{"3": 2, "4": 1}', '2025-06-01 14:00:00', '2025-06-02 12:00:00', 2320000.00, 'Confirmed', 'Lê Văn C', '0923456789', 'Thêm giường phụ', GETUTCDATE());

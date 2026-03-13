@@ -1,0 +1,87 @@
+@using LuxenHotel.Models.Entities.Orders;
+@model LuxenHotel.Models.ViewModels.Orders.OrderDetailsViewModel
+
+<div class="card card-flush py-4">
+    <!--begin::Card header-->
+    <div class="card-header">
+        <div class="card-title">
+            <h2>Booking Details</h2>
+        </div>
+    </div>
+
+    <div class="card-body pt-0">
+        <div class="table-responsive">
+            <!--begin::Table-->
+            <table class="table align-middle table-row-bordered mb-0 fs-6 gy-5 min-w-300px">
+                <tbody class="fw-semibold text-gray-600">
+                    <!-- Accommodation -->
+                    <tr>
+                        <td class="text-muted">
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-house-user fs-2 me-2"></i>
+                                Accommodation
+                            </div>
+                        </td>
+                        <td class="fw-bold text-end">
+                            <p class="text-gray-600 mb-0">@Model.AccommodationName</p>
+                        </td>
+                    </tr>
+
+                    <!-- Check-In -->
+                    <tr>
+                        <td class="text-muted">
+                            <div class="d-flex align-items-center">
+                                <i class="fa-regular fa-calendar-check fs-2 me-2"></i>
+                                Check-In
+                            </div>
+                        </td>
+                        <td class="fw-bold text-end">
+                            <p class="text-gray-600 mb-0">@Model.CheckInDate.ToString("dd/MM/yyyy")</p>
+                        </td>
+                    </tr>
+
+                    <!-- Check-Out -->
+                    <tr>
+                        <td class="text-muted">
+                            <div class="d-flex align-items-center">
+                                <i class="fa-regular fa-calendar-xmark fs-2 me-2"></i>
+                                Check-Out
+                            </div>
+                        </td>
+                        <td class="fw-bold text-end">
+                            <p class="text-gray-600 mb-0">@Model.CheckOutDate.ToString("dd/MM/yyyy")</p>
+                        </td>
+                    </tr>
+
+                    <!-- Guests -->
+                    <tr>
+                        <td class="text-muted">
+                            <div class="d-flex align-items-center">
+                                <i class="fa-solid fa-user-group fs-2 me-2"></i>
+                                Guests
+                            </div>
+                        </td>
+                        <td class="fw-bold text-end">
+                            <p class="text-gray-600 mb-0">@Model.NumberOfGuests</p>
+                        </td>
+                    </tr>
+
+                    <!-- Special Requests -->
+                    <tr>
+                        <td class="text-muted">
+                            <div class="d-flex align-items-center">
+                                <i class="fa-regular fa-clipboard fs-2 me-2"></i>
+                                Special Requests
+                            </div>
+                        </td>
+                        <td class="fw-bold text-end">
+                            <p class="text-gray-600 mb-0">@Model.SpecialRequests</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--end::Table-->
+        </div>
+    </div>
+
+</div>

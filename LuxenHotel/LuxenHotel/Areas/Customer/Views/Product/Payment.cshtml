@@ -1,0 +1,17 @@
+// Views/Product/Payment.cshtml
+@model Product
+<h2>Payment for @Model.Name</h2>
+<form asp-action="Payment" method="post">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <div class="form-group">
+        <label>Product Name: @Model.Name</label>
+    </div>
+    <div class="form-group">
+        <label>Price: @Model.Price.ToString("C")</label>
+    </div>
+    <div class="form-group">
+        <label for="amount">Quantity:</label>
+        <input type="number" name="amount" class="form-control" value="1" min="1" required />
+    </div>
+    <button type="submit" class="btn btn-success">Proceed to Payment</button>
+</form>

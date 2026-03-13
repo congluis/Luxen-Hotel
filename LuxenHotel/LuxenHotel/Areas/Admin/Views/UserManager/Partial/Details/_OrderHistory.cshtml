@@ -1,0 +1,92 @@
+﻿@model LuxenHotel.Areas.Admin.Controllers.UserDetailsViewModel
+@using LuxenHotel.Models.Entities.Orders
+
+<div class="card pt-4 mb-6 mb-xl-9">
+    <!--begin::Card header-->
+    <div class="card-header border-0">
+        <!--begin::Card title-->
+        <div class="card-title">
+            <h2 class="fw-bold mb-0">Order History</h2>
+        </div>
+        <!--end::Card title-->
+
+        <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
+            <div class="w-100 mw-200px">
+                <!--begin::Select2-->
+                <select class="form-select form-select-solid" data-control="select2"
+                        data-placeholder="Status"
+                        data-filter="status">
+                    <option value="">All Statuses</option>
+                    @foreach (var status in Enum.GetValues(typeof(LuxenHotel.Models.Entities.Orders.OrderStatus)))
+                    {
+                        <option value="@status">@status</option>
+                    }
+                </select>
+                <!--end::Select2-->
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body pt-0 pb-5">
+        <table class="table align-middle table-row-dashed gy-5" id="order_table">
+            <thead class="border-bottom border-gray-200 fs-7 fw-bold">
+            <tr class="text-start text-muted text-uppercase gs-0">
+                <th class="d-none"></th>
+                <th class="min-w-100px">order No.</th>
+                <th class="min-w-150px">Accommodation</th>
+                <th class="min-w-100px text-center">Status</th>
+                <th class="min-w-100px text-center">Amount</th>
+            </tr>
+            </thead>
+            <tbody class="fs-6 fw-semibold text-gray-600">
+            @if (Model.Orders != null && Model.Orders.Any())
+            {
+                foreach (var order in Model.Orders)
+                {
+                    <tr>
+                        <td class="d-none">
+                            @order.CreatedAt.ToString("yyyy-MM-ddTHH:mm:ss")
+                        </td>
+                        <td>
+                            <a href="/admin/orders/@order.OrderCode" class="text-gray-800 text-hover-primary fs-5 fw-bold mb-1">
+                                @order.OrderCode
+                            </a>
+                            <span class="d-block text-muted">
+                                @order.GetTimeElapsedSinceCreation()
+                            </span>
+                        </td>
+
+                        <td>
+                            <a href="/Accommodations/@order.Accommodation.Id"
+                               target="_blank" class="text-gray-600 text-hover-primary">
+                                @order.Accommodation.Name
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            @{
+                                string badgeClass = order.Status switch
+                                {
+                                    OrderStatus.Completed => "badge-light-success",
+                                    OrderStatus.Cancelled => "badge-light-danger",
+                                    OrderStatus.Created => "badge-light-warning",
+                                    OrderStatus.Confirmed => "badge-light-primary",
+                                    _ => "badge-light-secondary"
+                                };
+                            }
+                            <span class="badge @badgeClass">
+                                @order.Status
+                            </span>
+                        </td>
+                        <td class="text-center">
+                            @order.TotalPrice.ToString("N0")
+                            <i
+                                class="fa-solid fa-dong-sign">
+                            </i>
+                        </td>
+                    </tr>
+                }
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

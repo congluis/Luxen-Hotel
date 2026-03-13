@@ -1,0 +1,75 @@
+@using LuxenHotel.Models.ViewModels.Booking
+@model LuxenHotel.Models.ViewModels.Booking.ComboViewModel
+@{
+    var accommodationServices = ViewBag.AccommodationServices as List<ServiceViewModel> ?? new List<ServiceViewModel>();
+}
+
+<div class="card card-flush h-100">
+    <div class="card-header">
+        <div class="card-title">
+            <h2>Services Included with @Model.AccommodationName</h2>
+        </div>
+    </div>
+
+    <div class="card-body pt-0">
+        <div class="mb-7">
+            @if (accommodationServices.Any())
+            {
+                <table class="table align-middle table-row-dashed fs-6 gy-5 services-for-accommodation">
+                    <thead>
+                        <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
+                            <th class="w-25px pe-2"></th>
+                            <th class="min-w-200px">Service</th>
+                            <th class="min-w-100px text-end pe-5">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody class="fw-semibold text-gray-600">
+                        @foreach (var service in accommodationServices)
+                        {
+                            var checkboxId = $"service_{service.Id}";
+                            <tr>
+                                <td>
+                                    <div class="form-check form-check-sm form-check-custom form-check-solid">
+                                        <input class="form-check-input service-checkbox" type="checkbox"
+                                            name="SelectedServiceIds" value="@service.Id" id="@checkboxId"
+                                            data-price="@service.Price" data-accommodation-id=""
+                                            @(Model.SelectedServiceIds.Contains(service.Id) ? "checked" : "") />
+                                    </div>
+                                </td>
+                                <td class="text-gray-800 text-hover-primary fs-5 fw-bold">
+                                    <label for="@checkboxId" class="cursor-pointer">
+                                        @service.Name
+                                    </label>
+                                </td>
+                                <td class="text-end pe-5">
+                                    <span class="fw-bold ms-3">@service.Price.ToString("N0")</span>
+                                    <i class="fa-solid fa-dong-sign"></i>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2" class="text-end fw-bold">Estimated Total:</td>
+                            <td class="text-end pe-5">
+                                <span class="fw-bold ms-3 total-price" id="total_price">0</span>
+                                <i class="fa-solid fa-dong-sign"></i>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            }
+            else
+            {
+                <div class="alert alert-warning d-flex align-items-center p-4">
+                    <i class="ki-duotone ki-information fs-2tx me-3 text-warning"></i>
+                    <div>
+                        <h4 class="mb-1 fw-bold text-gray-900">No Services Available</h4>
+                        <div class="text-muted">No services are available for this accommodation.</div>
+                    </div>
+                </div>
+            }
+            <span asp-validation-for="SelectedServiceIds" class="text-danger"></span>
+        </div>
+    </div>
+</div>

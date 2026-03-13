@@ -1,0 +1,4 @@
+dotnet ef database drop
+rm -r Migrations
+dotnet ef migrations add InitialIdentity
+dotnet ef database update

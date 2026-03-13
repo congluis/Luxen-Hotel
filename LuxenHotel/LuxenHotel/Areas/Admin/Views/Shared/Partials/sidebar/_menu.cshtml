@@ -1,0 +1,87 @@
+@{
+  var action = ViewContext.RouteData.Values["Action"] as string;
+  var controller = ViewContext.RouteData.Values["Controller"] as string;
+}
+
+<div id="#kt_app_sidebar_menu" data-kt-menu="true" data-kt-menu-expand="false"
+  class="flex-column-fluid menu menu-sub-indention menu-column menu-rounded menu-active-bg mb-7">
+
+  <!-- Overview -->
+  <div data-kt-menu-trigger="click"
+    class="menu-item @(action == "Index" && controller == "Dashboard" ? "here show" : "")">
+    <a class="menu-link" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">
+      <span class="menu-icon">
+        <i class="fas fa-chart-pie ps-1"></i>
+      </span>
+      <span class="menu-title">Dashboard</span>
+    </a>
+  </div>
+
+  <!-- Bookings -->
+  <div data-kt-menu-trigger="click" class="menu-item">
+    <a class="menu-link" asp-area="Admin" asp-controller="OrderManager" asp-action="Index">
+      <span class="menu-icon">
+        <i class="fa-solid fa-clipboard-list ps-1"></i>
+      </span>
+      <span class="menu-title">Bookings</span>
+    </a>
+  </div>
+
+  <!-- Accommodations -->
+  <div data-kt-menu-trigger="click"
+    class="menu-item menu-accordion @(controller == "AccommodationManagement" ? "here show" : "")">
+    <!--begin:Menu link-->
+    <span class="menu-link">
+      <span class="menu-icon">
+        <i class="fa-solid fa-house-user ps-1"></i>
+      </span>
+      <span class="menu-title">Accommodations</span>
+      <span class="menu-arrow"></span>
+    </span>
+    <!--end:Menu link-->
+
+    <!--begin:Menu sub-->
+    <div class="menu-sub menu-sub-accordion">
+      <!--begin:Menu item-->
+      <div class="menu-item">
+        <a class="menu-link @(action == "Index" && controller == "AccommodationManagement" ? "active" : "")"
+          asp-area="Admin" asp-controller="AccommodationManagement" asp-action="Index">
+          <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+          <span class="menu-title">View All</span>
+        </a>
+      </div>
+      <!--end:Menu item-->
+
+      <!--begin:Menu item-->
+      <div class="menu-item">
+        <a class="menu-link  @(action == "Create" && controller == "AccommodationManagement" ? "active" : "")"
+          asp-area="Admin" asp-controller="AccommodationManagement" asp-action="Create">
+          <span class="menu-bullet"><span class="bullet bullet-dot"></span></span>
+          <span class="menu-title">Add New</span>
+        </a>
+      </div>
+      <!--end:Menu item-->
+    </div>
+    <!--end:Menu sub-->
+  </div>
+
+  <!-- Combos -->
+  <div data-kt-menu-trigger="click" class="menu-item @(controller == "ComboManager" ? "here show" : "")">
+    <a class="menu-link" asp-area="Admin" asp-controller="ComboManager" asp-action="Index">
+      <span class="menu-icon">
+        <i class="fa-solid fa-compass ps-1"></i>
+      </span>
+      <span class="menu-title">Combos</span>
+    </a>
+  </div>
+
+  <!-- Users -->
+  <div data-kt-menu-trigger="click" class="menu-item @(controller == "UserManager" ? "here show" : "")">
+    <a class="menu-link" asp-area="Admin" asp-controller="UserManager" asp-action="Index">
+      <span class="menu-icon">
+        <i class="fa-solid fa-users ps-1"></i>
+      </span>
+      <span class="menu-title">Users</span>
+    </a>
+  </div>
+</div>

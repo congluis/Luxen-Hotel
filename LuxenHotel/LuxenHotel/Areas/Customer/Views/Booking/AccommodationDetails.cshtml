@@ -1,0 +1,226 @@
+@model LuxenHotel.Models.ViewModels.Booking.AccommodationDetailsViewModel
+@using LuxenHotel.Models.ViewModels.Booking
+
+@{
+    ViewData["Title"] = @Model.Accommodation.Name;
+}
+
+@section Styles {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.css">
+
+    <style>
+        .owl-carousel .item {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .owl-carousel .item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .owl-carousel .owl-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 15px;
+        }
+
+        .accommodation-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0 0 10px;
+            line-height: initial;
+        }
+
+        .accommodation-title-price {
+            font-size: 18px;
+            opacity: .92;
+            font-weight: bold;
+            color: #f94c43;
+        }
+
+        .availability {
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 17px;
+            margin: 0 0 10px 0;
+            line-height: 21px;
+            display: block;
+        }
+    </style>
+}
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/jquery.magnific-popup.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".owl-carousel").owlCarousel({
+                items: 1,
+                loop: true,
+                autoplay: true,
+                autoplayTimeout: 5000
+            });
+
+            $('.image-popup').magnificPopup({
+                type: 'image',
+                gallery: {
+                    enabled: true
+                },
+                mainClass: 'mfp-fade',
+                removalDelay: 300
+            });
+        });
+    </script>
+}
+
+<div class="container">
+    <div class="row accommodation-details mb-20">
+        <div class="col-md-6">
+            @if (Model.Accommodation.Media.Any())
+            {
+                <div class="owl-carousel image-carousel">
+                    <div class="item">
+                        <a href="@Model.Accommodation.Thumbnail" class="image-popup">
+                            <img src="@Model.Accommodation.Thumbnail" alt="@Model.Accommodation.Name"
+                                class="img-responsive img-rounded">
+                        </a>
+                    </div>
+                    @foreach (var media in Model.Accommodation.Media)
+                    {
+                        <div class="item">
+                            <a href="@media" class="image-popup">
+                                <img src="@media" alt="@Model.Accommodation.Name" class="img-responsive img-rounded">
+                            </a>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+
+        <div class="col-md-6">
+            @{
+                string? statusLabel = null;
+                string statusClass = "";
+
+                switch (Model.Accommodation.Status)
+                {
+                    case LuxenHotel.Models.Entities.Booking.Accommodation.AccommodationStatus.Unpublished:
+                        statusLabel = "Currently unavailable";
+                        statusClass = "text-danger";
+                        break;
+
+                    case LuxenHotel.Models.Entities.Booking.Accommodation.AccommodationStatus.MaintenanceMode:
+                        statusLabel = "Under maintenance";
+                        statusClass = "text-warning";
+                        break;
+
+                    case LuxenHotel.Models.Entities.Booking.Accommodation.AccommodationStatus.FullyBooked:
+                        statusLabel = "Fully booked";
+                        statusClass = "text-secondary";
+                        break;
+                }
+            }
+
+            @if (!string.IsNullOrEmpty(statusLabel))
+            {
+                <p class="availability @statusClass">
+                    @statusLabel
+                </p>
+            }
+
+
+            <h1 class="accommodation-title">@Model.Accommodation.Name</h1>
+            <hr>
+
+            <div class="row" style="display: flex; align-items: center;">
+                <div class="col-md-8">
+                    <p class="accommodation-title-price">
+                        Price per Night:
+                        <span style="color: #114a6d">
+                            @Model.Accommodation.Price.ToString("#,##0 ")
+                            <i class="fa-solid fa-dong-sign" style="font-size: 0.8em;"></i>
+                        </span>
+                    </p>
+                    <p class="area" style="margin-bottom: -6px;"><strong>Room Size:</strong> @Model.Accommodation.Area
+                        m²</p>
+                    <p class="occupancy"><strong>Max Occupancy:</strong> @Model.Accommodation.MaxOccupancy guest(s)</p>
+                </div>
+                <div class="col-md-4 book-button" style="display: flex; justify-content: center;">
+                    @if (Model.Accommodation.Status ==
+                                        LuxenHotel.Models.Entities.Booking.Accommodation.AccommodationStatus.Published)
+                    {
+                        <a asp-area="Customer" asp-controller="Orders" asp-action="Create" asp-route-accommodationId="@Model.Accommodation.Id" class="btn btn-primary">
+                            <i class="fa fa-calendar"></i> BOOK NOW
+                        </a>
+                    }
+                    else
+                    {
+                        <button class="btn btn-secondary" disabled>
+                            <i class="fa fa-calendar"></i> Not Available
+                        </button>
+                    }
+                </div>
+            </div>
+
+            @if (Model.Accommodation.Services != null && Model.Accommodation.Services.Any())
+            {
+                <div class="services mt-4" style="margin-top: 20px;">
+                    <h4 class="font-weight-bold">Services Included</h4>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <ul class="list-unstyled">
+                                @foreach (var service in Model.Accommodation.Services)
+                                {
+                                    <li class="mb-2" style="margin-bottom: 12px;">
+                                        <div>
+                                            <i class="fa fa-check-circle text-success" style="margin-right: 6px;"></i>
+                                            <strong>@service.Name</strong>
+                                            @if (service.Price > 0)
+                                            {
+                                                <span class="text-primary">
+                                                    - @service.Price.ToString("#,##0") <i class="fa-solid fa-dong-sign"
+                                                        style="font-size: 0.8em;"></i>
+                                                </span>
+                                            }
+                                        </div>
+                                        @if (!string.IsNullOrEmpty(service.Description))
+                                        {
+                                            <div class="text-muted"
+                                                style="margin-left: 20px; margin-top: 4px; display: block; white-space: normal;">
+                                                @service.Description
+                                            </div>
+                                        }
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+
+    <div class="container mb-20">
+        <h3 class="fw-bold mb-10">Description</h3>
+        @if (!string.IsNullOrEmpty(Model.Accommodation.Description))
+        {
+            <div class="description">@Html.Raw(Model.Accommodation.Description)</div>
+        }
+    </div>
+
+    @await Html.PartialAsync("Partials/_AccommodationCombo", Model)
+
+    @await Html.PartialAsync("Partials/_AmenitiesFacilities")
+</div>

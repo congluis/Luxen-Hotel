@@ -1,0 +1,35 @@
+<div id="kt_app_header" class="app-header d-flex flex-column flex-stack">
+    <div class="d-flex align-items-center flex-stack flex-grow-1">
+        <!--begin::Logo-->
+        <div class="app-header-logo d-flex align-items-center flex-stack px-lg-10 mb-2" id="kt_app_header_logo">
+            <div class="btn btn-icon btn-active-color-primary w-35px h-35px ms-3 me-2 d-flex d-lg-none"
+                id="kt_app_sidebar_mobile_toggle">
+                <i class="fas fa-bars fs-2"></i>
+            </div>
+            <a href="?page=index" class="app-sidebar-logo">
+                <img alt="Logo" src="/images/logo.png" class="h-30px theme-light-show" />
+            </a>
+            <div id="kt_app_sidebar_toggle"
+                class="app-sidebar-toggle btn btn-sm btn-icon btn-color-warning me-n2 d-none d-lg-flex"
+                data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body"
+                data-kt-toggle-name="app-sidebar-minimize">
+                <i class="fas fa-chevron-left fs-2x rotate-180"></i>
+            </div>
+        </div>
+        <!--end::Logo-->
+
+        <!--begin::Breadcrumb-->
+        <div class="app-navbar flex-grow-1 justify-content-end" id="kt_app_header_navbar">
+            <div class="app-navbar-item d-flex align-items-stretch flex-lg-grow-1 me-2 me-lg-0">
+                <div class="d-flex flex-stack flex-wrap gap-4 w-100">
+                    @await Html.PartialAsyncFromArea("Admin", "Partials/sidebar/_breadcrumb")
+                </div>
+            </div>
+        </div>
+        <!--end::Breadcrumb-->
+    </div>
+
+    <!--begin::Separator-->
+    <div class="app-header-separator"></div>
+    <!--end::Separator-->
+</div>

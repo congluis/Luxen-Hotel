@@ -1,0 +1,69 @@
+@using LuxenHotel.Models.Entities.Booking
+@model LuxenHotel.Models.ViewModels.Booking.ComboListViewModel
+
+@section Styles {
+    @Html.LibStyle("datatables/datatables.bundle.css")
+}
+
+@section Scripts {
+    @Html.LibScript("datatables/datatables.bundle.js")
+
+    @Html.JsScript("save-combo.js")
+}
+
+<div class="card card-flush">
+    <!--begin::Card header-->
+    <div class="card-header align-items-center py-5 gap-2 gap-md-5">
+        <!--begin::Card title-->
+        <div class="card-title">
+            <!--begin::Search-->
+            <div class="d-flex align-items-center position-relative my-1">
+                <i class="fa-solid fa-magnifying-glass fs-3 position-absolute ms-4"></i>
+                <input type="text" data-filter="search" class="form-control form-control-solid w-250px ps-12"
+                    placeholder="Search Combo" />
+            </div>
+            <!--end::Search-->
+        </div>
+        <!--end::Card title-->
+        <!--begin::Card toolbar-->
+        <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
+            <div class="w-100 mw-200px">
+                <!--begin::Select2-->
+                <select class="form-select form-select-solid" data-control="select2" data-placeholder="Accommodation"
+                    data-filter="accommodation">
+                    <option value="">All Accommodations</option>
+                    @foreach (var accommodation in Model.Accommodations)
+                    {
+                        <option value="@accommodation.Id">@accommodation.Name</option>
+                    }
+                </select>
+                <!--end::Select2-->
+            </div>
+            <!--begin::Add combo-->
+            <a data-bs-target="#kt_modal_add_combo" data-bs-toggle="modal" class="btn btn-primary"> Add Combo </a>
+            <!--end::Add combo-->
+        </div>
+        <!--end::Card toolbar-->
+    </div>
+    <!--end::Card header-->
+    <!--begin::Card body-->
+    <div class="card-body pt-0">
+        <!--begin::Table-->
+        <div class="dt-container dt-bootstrap5 dt-empty-footer">
+            <div class="table-responsive">
+                <table class="table align-middle table-row-dashed fs-6 gy-5" id="combo_table">
+
+                    @Html.Partial("Partial/Index/_AccommodationTableHeader")
+                    <tbody class="fw-semibold text-gray-600">
+                        @foreach (var combo in Model.Combos)
+                        {
+                            @Html.Partial("Partial/Index/_AccommodationTableRow", combo)
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("Partial/Form/_AddComboForm", Model)

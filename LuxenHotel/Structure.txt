@@ -1,0 +1,109 @@
+📂 LuxenHotel
+├── 📂 Areas
+│   ├── 📂 Admin
+│   │   ├── 📂 Controllers
+│   │   │   ├── DashboardController.cs
+│   │   │   ├── UserManagementController.cs
+│   │   │   └── SettingsController.cs
+│   │   ├── 📂 Models
+│   │   │   └── AdminViewModels.cs
+│   │   ├── 📂 Views
+│   │   │   ├── Dashboard
+│   │   │   │   └── Index.cshtml
+│   │   │   ├── UserManagement
+│   │   │   │   ├── Index.cshtml
+│   │   │   │   └── Edit.cshtml
+│   │   │   └── Settings
+│   │   │       └── Index.cshtml
+│   │   └── 📂 Data
+│   │       └── AdminRepository.cs
+│   ├── 📂 Staff
+│   │   ├── 📂 Controllers
+│   │   │   ├── TaskController.cs
+│   │   │   └── ReportController.cs
+│   │   ├── 📂 Models
+│   │   │   └── StaffViewModels.cs
+│   │   ├── 📂 Views
+│   │   │   ├── Task
+│   │   │   │   ├── Index.cshtml
+│   │   │   │   └── Details.cshtml
+│   │   │   └── Reportcshtml
+│   │   │       └── Index.
+│   │   └── 📂 Data
+│   │       └── StaffRepository.cs
+│   └── 📂 Customer
+│       ├── 📂 Controllers
+│       │   ├── ProfileController.cs
+│       │   └── OrderController.cs
+│       ├── 📂 Models
+│       │   └── CustomerViewModels.cs
+│       ├── 📂 Views
+│       │   ├── Profile
+│       │   │   └── Index.cshtml
+│       │   ├── Order
+│       │   │   ├── Index.cshtml
+│       │   │   └── Create.cshtml
+│       └── 📂 Data
+│           └── CustomerRepository.cs
+├── 📂 Models
+│   ├── 📂 Entities
+│   │   ├── User.cs
+│   │   ├── Order.cs
+│   │   ├── Task.cs
+│   │   └── Report.cs
+│   ├── 📂 ViewModels
+│   │   ├── LoginViewModel.cs
+│   │   ├── RegisterViewModel.cs
+│   │   └── ErrorViewModel.cs
+│   └── 📂 DTOs
+│       ├── UserDTO.cs
+│       └── OrderDTO.cs
+├── 📂 Views
+│   ├── Home
+│   │   └── Index.cshtml
+│   ├── Account
+│   │   ├── Login.cshtml
+│   │   ├── Register.cshtml
+│   │   └── AccessDenied.cshtml
+│   ├── Shared
+│   │   ├── _Layout.cshtml
+│   │   ├── _AdminLayout.cshtml
+│   │   ├── _StaffLayout.cshtml
+│   │   ├── _CustomerLayout.cshtml
+│   │   └── _ValidationScriptsPartial.cshtml
+│   └── _ViewImports.cshtml
+├── 📂 Data
+│   ├── ApplicationDbContext.cs
+│   ├── 📂 Migrations
+│   │   └── *.cs
+│   └── SeedData.cs
+├── 📂 Services
+│   ├── IAuthService.cs
+│   ├── AuthService.cs
+│   ├── IOrderService.cs
+│   ├── OrderService.cs
+│   ├── ITaskService.cs
+│   └── TaskService.cs
+├── 📂 Middleware
+│   └── RoleBasedRedirectionMiddleware.cs
+├── 📂 wwwroot
+│   ├── 📂 css
+│   │   ├── site.css
+│   │   ├── admin.css
+│   │   ├── staff.css
+│   │   └── customer.css
+│   ├── 📂 js
+│   │   ├── site.js
+│   │   └── validation.js
+│   ├── 📂 images
+│   └── 📂 lib
+│       ├── bootstrap
+│       └── jquery
+├── 📂 Configuration
+│   ├── RoleConfiguration.cs
+│   └── PolicyConfiguration.cs
+├── Program.cs
+├── Startup.cs (optional, for older ASP.NET Core versions)
+├── appsettings.json
+├── appsettings.Development.json
+└── README.md

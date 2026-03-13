@@ -1,0 +1,77 @@
+﻿@model LuxenHotel.Areas.Admin.Controllers.UserDetailsViewModel
+@using LuxenHotel.Models.Entities.Orders
+
+@section Styles {
+    @Html.LibStyle("datatables/datatables.bundle.css")
+}
+
+@section Scripts {
+    @Html.LibScript("datatables/datatables.bundle.js")
+
+    <script !src="">
+        $(document).ready(function () {
+            $('select[data-filter="status"]').select2({
+                placeholder: "Status",
+                allowClear: true,
+                minimumResultsForSearch: Infinity
+            });
+            
+            var table = $("#order_table").DataTable({
+                responsive: true,
+                pageLength: 5,
+                lengthMenu: [
+                    [5, 10, 25, 50, -1],
+                    [5, 10, 25, 50, "All"],
+                ],
+                ordering: true,
+                searching: true,
+                columnDefs: [
+                    {
+                        targets: 0,  
+                        orderable: true,  
+                        visible: false,   
+                    },
+                    {
+                        targets: 1, 
+                        orderable: true, 
+                    },
+                    {
+                        targets: 4,
+                        orderable: false, 
+                        searchable: false,
+                    },
+                ],
+                order: [[0, 'desc']],
+                language: {
+                    emptyTable: "No orders available",
+                    zeroRecords: "No matching orders found",
+                },
+                drawCallback: function () {
+                    $('[data-kt-menu-trigger="click"]').each(function () {
+                        if (!$(this).data("ktMenu")) {
+                            new KTMenu($(this).get(0));
+                        }
+                    });
+                },
+            });
+
+            // Status filter handler
+            $('select[data-filter="status"]').on('change', function () {
+                var status = $(this).val();
+                table.column(3).search(status).draw();
+            });
+        });
+    </script>
+}
+
+<div class="d-flex flex-column flex-xl-row">
+    <div class="flex-column flex-lg-row-auto w-100 w-xl-350px mb-10">
+        @Html.Partial("Partial/Details/_ProfileSection", Model)
+    </div>
+
+    <div class="flex-lg-row-fluid ms-lg-15">
+
+        @await Html.PartialAsync("Partial/Details/_OrderHistory", Model)
+       
+    </div>
+</div>

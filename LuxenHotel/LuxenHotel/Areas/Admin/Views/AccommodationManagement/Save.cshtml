@@ -1,0 +1,105 @@
+@model LuxenHotel.Models.ViewModels.Booking.AccommodationViewModel
+
+@{
+    var servicesJson = Json.Serialize(Model.Services.Select(s => new
+    {
+        id = s.Id,
+        name = s.Name,
+        price = s.Price,
+        description = s.Description
+    }).ToList());
+
+    var comboJson = Json.Serialize(Model.Combos.Select(s => new
+    {
+        id = s.Id,
+        name = s.Name,
+        price = s.Price,
+        status = s.Status,
+        description = s.Description
+    }).ToList());
+}
+
+@section Styles {
+    @Html.CdnCss("https://unpkg.com/filepond/dist/filepond.min.css")
+    @Html.CdnCss("https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css")
+    @Html.CdnCss("https://cdn.quilljs.com/1.3.6/quill.snow.css")
+
+    <style>
+        .filepond--list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filepond--item {
+            width: calc(20% - 8px);
+            height: auto;
+        }
+
+        .filepond--item>.filepond--panel {
+            height: 100%;
+        }
+
+        .filepond--image-preview {
+            width: 100%;
+            height: 170px;
+            object-fit: cover;
+        }
+
+        .filepond--credits {
+            display: none !important;
+        }
+
+        .image-input-placeholder {
+            background-image: url("/images/blank-image.svg");
+        }
+    </style>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    @Html.CdnScript("https://unpkg.com/filepond/dist/filepond.min.js")
+    @Html.CdnScript("https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js")
+    @Html.CdnScript("https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js")
+    @Html.CdnScript("https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js")
+    @Html.CdnScript("https://cdn.quilljs.com/1.3.6/quill.js")
+    @Html.CdnScript("https://cdn.jsdelivr.net/npm/sweetalert2@11")
+
+    @Html.JsScript("save-accommodation.js")
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector("form");
+            const hasThumbnail = document.getElementById("hasThumbnail").value === "true";
+            const thumbnailInput = document.querySelector('input[name="ThumbnailFile"]');
+            const errorSpan = document.querySelector('[data-valmsg-for="ThumbnailFile"]');
+
+            form.addEventListener("submit", function (e) {
+                if (!hasThumbnail && thumbnailInput.files.length === 0) {
+                    e.preventDefault();
+                    if (errorSpan) {
+                        errorSpan.textContent = "Thumbnail is required.";
+                    }
+                } else {
+                    if (errorSpan) errorSpan.textContent = "";
+                }
+            });
+        });
+    </script>
+
+    <script type="application/json" id="existingMedia">
+                            @Html.Raw(Json.Serialize(Model.Media))
+                        </script>
+
+    <script>
+        window.existingServices = @Html.Raw(servicesJson);
+    </script>
+}
+
+<form asp-action="@((Model.Id == 0) ? "Create" : "Edit")" asp-route-id="@Model.Id"
+    class="form d-flex flex-column flex-lg-row fv-plugins-bootstrap5 fv-plugins-framework" method="post"
+    enctype="multipart/form-data">
+    @Html.Partial("Partial/Save/_Aside", Model)
+    @Html.Partial("Partial/Save/_Main", Model)
+</form>

@@ -1,0 +1,37 @@
+@{
+    var toastMessage = TempData["NotificationMessage"] as string;
+    var toastType = TempData["NotificationType"] as string ?? "info";
+
+    var toastIcon = toastType switch
+    {
+        "success" => "fa-circle-check",
+        "error" => "fa-circle-exclamation",
+        "warning" => "fa-triangle-exclamation",
+        _ => "fa-circle-info"
+    };
+
+    var toastColor = toastType switch
+    {
+        "success" => "success",
+        "error" => "danger",
+        "warning" => "warning text-dark",
+        _ => "info text-dark"
+    };
+}
+
+@if (!string.IsNullOrEmpty(toastMessage))
+{
+    <div class="position-fixed top-0 end-0 p-3" style="z-index: 1080;">
+        <div class="toast show fade" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true"
+            data-bs-delay="5000">
+            <div class="toast-header text-@toastColor">
+                <i class="fa-solid @toastIcon me-2 text-@toastColor"></i>
+                <strong class="me-auto text-capitalize">@toastType</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                @toastMessage
+            </div>
+        </div>
+    </div>
+}

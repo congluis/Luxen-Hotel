@@ -1,0 +1,96 @@
+@model IEnumerable<LuxenHotel.Models.ViewModels.Booking.AccommodationViewModel>
+@using System.Text.RegularExpressions
+
+@{
+    ViewData["Title"] = "Accommodations";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+}
+
+@section Scripts {
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#roomTable').DataTable({
+                paging: true, // Bật phân trang
+                searching: true, // Bật tìm kiếm
+                ordering: true, // Bật sắp xếp cột
+                info: true, // Hiển thị thông tin bảng
+                columnDefs: [
+                    {
+                        targets: [0, 3], // Cột IMAGE và PURCHASE
+                        orderable: false // Tắt sắp xếp cho các cột này
+                    }
+                ],
+                rowCallback: function (row, data, index) {
+                    $(row).removeClass('hover');
+                    $('table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd').css('background-color', '');
+                }
+            });
+        });
+    </script>
+}
+
+<div class="container">
+    <table id="roomTable" class="display">
+        <thead>
+            <tr class="products-title">
+                <th class="table-products-image pos-center">Image</th>
+                <th class="table-products-name pos-center">Accommodation</th>
+                <th class="table-products-price pos-center">Price</th>
+                <th class="table-products-total pos-center">Purchase</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var room in Model)
+            {
+                <tr class="table-products-list pos-center">
+                    <td class="products-image-table">
+                        @if (room.Thumbnail != null)
+                        {
+                            <img src="@room.Thumbnail" alt="@room.Name" class="img-responsive" />
+                        }
+                        else
+                        {
+                            <img src="https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg"
+                                alt="No Image" class="img-responsive" />
+                        }
+                    </td>
+                    <td class="title-table">
+                        <div class="room-details-list clearfix">
+                            <div class="pull-left">
+                                <h5>@room.Name</h5>
+                            </div>
+                        </div>
+
+                        @{
+                            var plainText = Regex.Replace(room.Description ?? "", "<.*?>", ""); // loại bỏ HTML
+                            var description = string.IsNullOrEmpty(plainText)
+                            ? "No description available"
+                            : plainText.Length > 100
+                            ? plainText.Substring(0, 100) + "..."
+                            : plainText;
+                        }
+
+                        <p>@description</p>
+                    </td>
+                    <td>
+                        <h3>
+                            @room.Price.ToString("#,##0 ")
+                            <i class="fa-solid fa-dong-sign" style="font-size: 0.8em;"></i>
+                        </h3>
+                    </td>
+                    <td>
+                        <div class="book-button">
+                            <a href="@Url.Action("AccommodationDetails", "Booking", new { id = room.Id })">
+                                <span class="mobile-visibility">BOOK</span>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

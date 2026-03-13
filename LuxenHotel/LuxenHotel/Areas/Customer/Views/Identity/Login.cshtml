@@ -1,0 +1,51 @@
+@model LuxenHotel.Models.ViewModels.Identity.LoginViewModel;
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<div class="auth-container">
+    <div class="title-shape text-center">
+        <img alt="Shape" src="/images/shape.png">
+    </div>
+    <form asp-action="Login" method="post">
+        <div asp-validation-summary="All" class="alert alert-danger validation-summary-errors" role="alert"
+            style="display: @(ViewData.ModelState.IsValid ? "none" : "block");"></div>
+        <div class="form-group">
+            <label asp-for="UsernameOrEmail" class="control-label"></label>
+            <input asp-for="UsernameOrEmail" class="form-control" placeholder="Enter your Username or Email " />
+            <span asp-validation-for="UsernameOrEmail" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password" class="control-label"></label>
+            <input asp-for="Password" class="form-control" placeholder="Enter your password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="checkbox">
+                        <label>
+                            <input asp-for="RememberMe" /> @Html.DisplayNameFor(m => m.RememberMe)
+                        </label>
+                    </div>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <a href="#!" class="forgot-password">Forgot password?</a>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+        <div class="footer-links">
+            <p>Not a member? <a href="@Url.Action("Register")">Register</a></p>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+}

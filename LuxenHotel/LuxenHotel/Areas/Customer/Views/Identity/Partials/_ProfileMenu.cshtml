@@ -1,0 +1,15 @@
+<div class="col-md-4">
+    <div class="card mb-4">
+        <div class="card-header">Profile Menu</div>
+        <div class="list-group list-group-flush">
+            <a asp-area="Customer" asp-controller="Identity" asp-action="Profile"
+                class="list-group-item list-group-item-action @(ViewContext.RouteData.Values["action"]?.ToString() == "Profile" ? "active" : "")">
+                <i class=" fas fa-user mr-2"></i> Profile
+            </a>
+            <a asp-area="Customer" asp-controller="Identity" asp-action="ChangePassword"
+                class="list-group-item list-group-item-action @(ViewContext.RouteData.Values["action"]?.ToString() == "ChangePassword" ? "active" : "")">
+                <i class="fas fa-key mr-2"></i> Change Password
+            </a>
+        </div>
+    </div>
+</div>

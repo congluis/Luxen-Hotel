@@ -1,0 +1,78 @@
+@model LuxenHotel.Models.ViewModels.Booking.ComboListViewModel
+@using LuxenHotel.Models.Entities.Booking
+
+<div class="fv-row mb-7">
+    <label class="fw-semibold fs-6 mb-2">Services</label>
+    <div class="services-container">
+        <div id="services_placeholder" class="mt-3">
+            <div class="alert alert-info mb-0">
+                <div class="d-flex flex-column">
+                    <h4 class="mb-1 text-dark">Select an accommodation</h4>
+                    <span>Please select an accommodation to view available services.</span>
+                </div>
+            </div>
+        </div>
+
+        @foreach (var accommodationPair in Model.AccommodationServices)
+        {
+            <table class="table align-middle table-row-dashed fs-6 gy-5 services-for-accommodation"
+                id="services_@accommodationPair.Key" style="display: none;">
+                <thead>
+                    <tr class="text-start text-gray-500 fw-bold fs-7 text-uppercase gs-0">
+                        <th class="w-25px pe-2"></th>
+                        <th class="min-w-200px">Service</th>
+                        <th class="min-w-100px text-end pe-5">Price</th>
+                    </tr>
+                </thead>
+                <tbody class="fw-semibold text-gray-600">
+                    @if (accommodationPair.Value != null && accommodationPair.Value.Any())
+                    {
+                        foreach (var service in accommodationPair.Value)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="form-check form-check-sm form-check-custom form-check-solid">
+                                        <input class="form-check-input service-checkbox" type="checkbox" name="SelectedServiceIds"
+                                            value="@service.Id" id="service_@accommodationPair.Key@service.Id"
+                                            data-price="@service.Price" data-accommodation-id="@accommodationPair.Key" />
+                                    </div>
+                                </td>
+                                <td class="text-gray-800 text-hover-primary fs-5 fw-bold">
+                                    <label for="service_@accommodationPair.Key@service.Id" class="cursor-pointer">
+                                        @service.Name
+                                    </label>
+                                </td>
+                                <td class="text-end pe-5">
+                                    <span class="fw-bold ms-3">@service.Price.ToString("N0")</span>
+                                    <i class="fa-solid fa-dong-sign"></i>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="3">
+                                <div class="alert alert-warning mb-0">
+                                    <div class="d-flex flex-column">
+                                        <h4 class="mb-1 text-dark">No services available</h4>
+                                        <span>This accommodation doesn't have any services yet.</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2" class="text-end fw-bold">Estimated Total:</td>
+                        <td class="text-end pe-5">
+                            <span class="fw-bold ms-3 total-price" id="total_price_@accommodationPair.Key">0</span>
+                            <i class="fa-solid fa-dong-sign"></i>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        }
+    </div>
+</div>

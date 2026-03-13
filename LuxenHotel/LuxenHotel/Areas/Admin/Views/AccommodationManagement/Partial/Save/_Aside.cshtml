@@ -1,0 +1,189 @@
+@model LuxenHotel.Models.ViewModels.Booking.AccommodationViewModel
+@using LuxenHotel.Models.Entities.Booking
+
+@functions {
+  private string GetStatusBackgroundColor(Accommodation.AccommodationStatus status)
+  {
+    return status switch
+    {
+      Accommodation.AccommodationStatus.Published => "bg-light-success",
+      Accommodation.AccommodationStatus.Unpublished => "bg-light-danger",
+      Accommodation.AccommodationStatus.MaintenanceMode => "bg-light-warning",
+      Accommodation.AccommodationStatus.FullyBooked => "bg-light-primary",
+      _ => "bg-light-secondary"
+    };
+  }
+
+  private string GetStatusIcon(Accommodation.AccommodationStatus status)
+  {
+    return status switch
+    {
+      Accommodation.AccommodationStatus.Published => "fas fa-check-circle",
+      Accommodation.AccommodationStatus.Unpublished => "fas fa-times-circle",
+      Accommodation.AccommodationStatus.MaintenanceMode => "fas fa-tools",
+      Accommodation.AccommodationStatus.FullyBooked => "fas fa-calendar-times",
+      _ => "fas fa-question-circle"
+    };
+  }
+
+  private string GetStatusIconColor(Accommodation.AccommodationStatus status)
+  {
+    return status switch
+    {
+      Accommodation.AccommodationStatus.Published => "text-success",
+      Accommodation.AccommodationStatus.Unpublished => "text-danger",
+      Accommodation.AccommodationStatus.MaintenanceMode => "text-warning",
+      Accommodation.AccommodationStatus.FullyBooked => "text-primary",
+      _ => "text-muted"
+    };
+  }
+
+  private string GetStatusDisplayName(Accommodation.AccommodationStatus status)
+  {
+    return status switch
+    {
+      Accommodation.AccommodationStatus.Published => "Available",
+      Accommodation.AccommodationStatus.Unpublished => "Hidden",
+      Accommodation.AccommodationStatus.MaintenanceMode => "Under Maintenance",
+      Accommodation.AccommodationStatus.FullyBooked => "Fully Booked",
+      _ => "Unknown"
+    };
+  }
+
+  private string GetStatusDescription(Accommodation.AccommodationStatus status)
+  {
+    return status switch
+    {
+      Accommodation.AccommodationStatus.Published => "Is available for booking.",
+      Accommodation.AccommodationStatus.Unpublished => "Is hidden and not bookable.",
+      Accommodation.AccommodationStatus.MaintenanceMode => "Is temporarily closed for maintenance.",
+      Accommodation.AccommodationStatus.FullyBooked => "No available slots for booking.",
+      _ => "Unknown status."
+    };
+  }
+}
+
+<div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
+  <!--begin::Thumbnail settings-->
+  <div class="card card-flush py-4">
+    <div class="card-header">
+      <div class="card-title">
+        <h2>Thumbnail</h2>
+      </div>
+    </div>
+
+    <div class="card-body text-center pt-0">
+      <style>
+        .image-input-placeholder {
+          background-image: url("/images/blank-image.svg");
+        }
+
+        [data-bs-theme="dark"] .image-input-placeholder {
+          background-image: url("/images/blank-image-dark.svg");
+        }
+      </style>
+
+      <div
+        class="image-input image-input-outline image-input-placeholder mb-3 @(string.IsNullOrEmpty(Model.Thumbnail) ? "image-input-empty" : "")"
+        data-kt-image-input="true">
+        <div class="image-input-wrapper w-150px h-150px"
+          style="background-image: url(@(string.IsNullOrEmpty(Model.Thumbnail) ? "/images/blank-image.svg" : Model.Thumbnail))">
+        </div>
+
+        <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+          data-kt-image-input-action="change" data-bs-toggle="tooltip" aria-label="Change thumbnail"
+          data-bs-original-title="Change thumbnail">
+          <i class="fa-solid fa-pencil fs-7"></i>
+          <input type="file" asp-for="ThumbnailFile" accept=".png, .jpg, .jpeg" />
+          <input type="hidden" name="ThumbnailFile_remove" />
+        </label>
+
+        <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+          data-kt-image-input-action="cancel" data-bs-toggle="tooltip" aria-label="Cancel thumbnail"
+          data-bs-original-title="Cancel thumbnail">
+          <i class="fa-solid fa-xmark fs-2"></i>
+        </span>
+
+        <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+          data-kt-image-input-action="remove" data-bs-toggle="tooltip" aria-label="Remove thumbnail"
+          data-bs-original-title="Remove thumbnail">
+          <i class="fa-solid fa-xmark fs-2"></i>
+        </span>
+      </div>
+
+      <div class="text-muted fs-7">
+        Set the accommodation thumbnail. Only *.png, *.jpg, and *.jpeg image files are accepted.
+      </div>
+      <span asp-validation-for="ThumbnailFile" class="text-danger"></span>
+    </div>
+  </div>
+
+  <!--end::Thumbnail settings-->
+
+  <!--begin::General-->
+  <div class="card card-flush py-4">
+    <!--begin::Card header-->
+    <div class="card-header">
+      <div class="card-title">
+        <h2>General</h2>
+      </div>
+    </div>
+    <!--end::Card header-->
+
+    <!--begin::Card body-->
+    <div class="card-body pt-0">
+      <!-- Accommodation Name -->
+      <div class="mb-10 fv-row fv-plugins-icon-container">
+        <label asp-for="Name" class="required form-label"></label>
+        <input asp-for="Name" class="form-control mb-2" placeholder="Accommodation name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+        <div class="text-muted fs-7">A name is required and should be unique to identify the accommodation.</div>
+      </div>
+
+      <!-- Price -->
+      <div class="mb-10 fv-row fv-plugins-icon-container">
+        <label asp-for="Price" class="required form-label"></label>
+        <input asp-for="Price" class="form-control mb-2" placeholder="Accommodation price per night" type="number" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+        <div class="text-muted fs-7">Set the price per night for the accommodation.</div>
+      </div>
+    </div>
+    <!--end::Card body-->
+  </div>
+  <!--end::General-->
+
+  <!--begin::Status-->
+  <div class="card card-flush py-4">
+    <div class="card-header">
+      <div class="card-title">
+        <h2>Status</h2>
+      </div>
+    </div>
+
+    <div class="card-body pt-0">
+      @foreach (var status in
+            Enum.GetValues(typeof(Accommodation.AccommodationStatus)).Cast<Accommodation.AccommodationStatus>())
+      {
+        <label class="d-flex flex-stack mb-5 cursor-pointer">
+          <span class="d-flex align-items-center me-2">
+            <span class="symbol symbol-50px me-6">
+              <span class="symbol-label @GetStatusBackgroundColor(status)">
+                <i class="@GetStatusIcon(status) fs-1 @GetStatusIconColor(status)"></i>
+              </span>
+            </span>
+            <span class="d-flex flex-column">
+              <span class="fw-bold fs-6">@status.ToString()</span>
+              <span class="fs-7 text-muted">@GetStatusDescription(status)</span>
+            </span>
+          </span>
+          <span class="form-check form-check-custom form-check-solid">
+            <input class="form-check-input" type="radio" asp-for="Status" value="@status" />
+          </span>
+        </label>
+      }
+      <div class="text-muted fs-7 mt-4">Set the product current availability status.</div>
+      <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+  </div>
+  <!--end::Status-->
+</div>

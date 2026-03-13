@@ -1,0 +1,51 @@
+@model LuxenHotel.Models.ViewModels.Booking.AccommodationViewModel
+
+<div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
+  <!--begin:::Tabs-->
+  <ul class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-semibold mb-n2" role="tablist">
+    <!--begin:::Tab item-->
+    <li class="nav-item" role="presentation">
+      <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab" href="#general" aria-selected="true"
+        role="tab">Details</a>
+    </li>
+    <!--end:::Tab item-->
+
+    <!--begin:::Tab item-->
+    <li class="nav-item" role="presentation">
+      <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#services" aria-selected="false"
+        tabindex="-1" role="tab">Services</a>
+    </li>
+    <!--end:::Tab item-->
+  </ul>
+  <!--end:::Tabs-->
+
+  <!--begin::Tab content-->
+  <div class="tab-content">
+    <!--begin::Tab pane-->
+    @Html.Partial("Partial/Save/_GeneralTab", Model)
+    <!--end::Tab pane-->
+
+    <!--begin::Tab pane-->
+    @Html.Partial("Partial/Save/_ServicesTab", Model)
+    <!--end::Tab pane-->
+  </div>
+  <!--end::Tab content-->
+
+  <div class="d-flex justify-content-end">
+    <!--begin::Button-->
+    <a asp-action="Index" id="cancel" class="btn btn-light me-5">
+      Cancel
+    </a>
+    <!--end::Button-->
+
+    <!--begin::Button-->
+    <button type="submit" id="submit" class="btn btn-primary">
+      <span class="indicator-label"> Save Changes </span>
+      <span class="indicator-progress">
+        Please wait...
+        <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+      </span>
+    </button>
+    <!--end::Button-->
+  </div>
+</div>

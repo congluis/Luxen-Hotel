@@ -1,0 +1,98 @@
+@using LuxenHotel.Models.Entities.Orders
+@model LuxenHotel.Models.ViewModels.Orders.OrderDetailsViewModel
+
+<!-- Display TempData Messages -->
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["Message"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        @TempData["Error"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<form asp-action="UpdateOrderStatus" asp-route-orderId="@Model.OrderId" method="post"
+    class="form d-flex flex-column flex-lg-row">
+    @Html.AntiForgeryToken()
+    <!-- Order Information Card -->
+    <div class="w-100 flex-lg-row-auto w-lg-300px mb-7 me-7 me-lg-10">
+        <div class="card card-flush py-4">
+            <div class="card-header">
+                <div class="card-title">
+                    <h2>Order Information</h2>
+                </div>
+            </div>
+
+            <div class="card-body pt-0">
+                <div class="d-flex flex-column gap-10">
+                    <div class="fv-row">
+                        <label class="form-label">Order ID</label>
+                        <div class="fw-bold fs-3">@Model.OrderCode</div>
+                    </div>
+
+                    <div class="fv-row">
+                        <label class="form-label">Created On</label>
+                        <div class="fw-bold fs-3">@Model.CreatedAt.ToString("dd/MM/yyyy HH:mm")</div>
+                        <div class="text-muted fs-7">The date and time when the order was created.</div>
+                    </div>
+
+                    <div class="fv-row">
+                        <label class="required form-label" for="targetStatus">Status</label>
+                        <select class="form-select mb-2" id="targetStatus" name="targetStatus" data-control="select2"
+                            data-hide-search="true" required aria-required="true">
+                            <option value="" disabled>Select an option</option>
+                            @foreach (OrderStatus status in Enum.GetValues(typeof(OrderStatus)))
+                            {
+                                <option value="@status" selected="@(Model.OrderStatus == status.ToString())">@status
+                                </option>
+                            }
+                        </select>
+                        <div class="text-muted fs-7">Select the current status of the order.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Actions -->
+        <div class="d-flex justify-content-center pt-7">
+            <a href="@Url.Action("Details", new { orderCode = Model.OrderCode })"
+                class="btn btn-sm btn-light fw-bold btn-active-light-primary me-2">Cancel</a>
+            <button type="submit" class="btn btn-sm fw-bold btn-primary">Save Changes</button>
+        </div>
+    </div>
+
+    <!-- Main Content Column -->
+    <div class="d-flex flex-column flex-lg-row-fluid gap-7 gap-lg-10">
+        <!-- Tab Navigation -->
+        <ul class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-semibold mb-n2"
+            role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" data-bs-toggle="tab" href="#_CustomerInformation" aria-selected="true"
+                    role="tab">Customer Information</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#_BookingDetails" aria-selected="false"
+                    role="tab">Booking Details</a>
+            </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="_CustomerInformation" role="tabpanel">
+                @Html.Partial("Partial/Details/_CustomerInformation", Model)
+            </div>
+            <div class="tab-pane fade" id="_BookingDetails" role="tabpanel">
+                @Html.Partial("Partial/Details/_BookingDetails", Model)
+            </div>
+        </div>
+
+        <!-- Services and Combos Section -->
+        @Html.Partial("Partial/Details/_ServiceSection", Model)
+        @Html.Partial("Partial/Details/_ComboSection", Model)
+    </div>
+</form>

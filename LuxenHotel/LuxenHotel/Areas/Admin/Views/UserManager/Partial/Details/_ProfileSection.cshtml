@@ -1,0 +1,70 @@
+﻿@model LuxenHotel.Areas.Admin.Controllers.UserDetailsViewModel
+
+<div class="card mb-5 mb-xl-8">
+    <!--begin::Card body-->
+    <div class="card-body">
+        <!--begin::Details toggle-->
+        <div class="d-flex flex-stack fs-4 py-3">
+            <div class="fw-bold">
+                Profile
+            </div>
+            <!--begin::Badge-->
+            <div class="badge badge-light-info d-inline">
+                @if (Model.Roles != null && Model.Roles.Any())
+                {
+                    @string.Join(", ", Model.Roles)
+                }
+                else
+                {
+                    @:Standard User
+                }
+            </div>
+            <!--end::Badge-->
+        </div>
+        <!--end::Details toggle-->
+        <div class="separator separator-dashed my-3"></div>
+        <!--begin::Details content-->
+        <div class="pb-5 fs-6">
+            <!--begin::Details item-->
+            <div class="fw-bold mt-5">Account ID</div>
+            <div class="text-gray-600">@Model.Id</div>
+            <!--end::Details item-->
+
+            <!--begin::Details item-->
+            <div class="fw-bold mt-5">Full Name</div>
+            <div class="text-gray-600">@Model.FullName</div>
+            <!--end::Details item-->
+
+            <!--begin::Details item-->
+            <div class="fw-bold mt-5">Email</div>
+            <div class="text-gray-600">@Model.Email</div>
+            <!--end::Details item-->
+
+            <!--begin::Details item-->
+            <div class="fw-bold mt-5">Username</div>
+            <div class="text-gray-600">@Model.UserName</div>
+            <!--end::Details item-->
+            <!--begin::Details item-->
+            <div class="fw-bold mt-5">Phone Number</div>
+            <div class="text-gray-600">@Model.PhoneNumber</div>
+            <!--end::Details item-->
+            <!--begin::Details item-->
+            <div class="fw-bold mt-5">Latest Order</div>
+            <div class="text-gray-600">
+                @if (Model.Orders != null && Model.Orders.Any())
+                {
+                    var latestOrder = Model.Orders.First();
+                    <a href="/admin/orders/@latestOrder.OrderCode" class="text-gray-600 text-hover-primary" target="_blank">
+                        #@latestOrder.OrderCode
+                    </a>
+                }
+                else
+                {
+                    @:No orders found
+                }
+            </div>
+        </div>
+        <!--end::Details content-->
+    </div>
+    <!--end::Card body-->
+</div>
